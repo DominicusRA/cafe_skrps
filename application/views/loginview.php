@@ -46,6 +46,9 @@
           <div class="col-sm">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
+          <div class="col-sm">
+            <button type="button" class="btn btn-primary btn-block">Register</button>
+          </div>
           <!-- /.col -->
         </div>
       </form>
