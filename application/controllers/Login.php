@@ -2,24 +2,40 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct(){
+		parent::__construct();
+		// $this->load->library('form_validation');
+		$this->load->model('loginmodel');
+    }
 	public function index()
 	{
-		$this->load->view('login');
+		// $this->load->view('loginview');
+		$status = $this->loginmodel->cek_session();
+		if($status){
+			// echo $status;
+            redirect("dashboard");
+        }else{
+            $this->load->view('loginview');
+        }
+	}
+	public function cek_log()
+	{
+		$username = $this->input->post("username", TRUE);
+        $password = $this->input->post("password", TRUE);
+		// $password = md5($password);
+		// $username = md5($username);
+
+		$status = $this->loginmodel->cek_login(array('username'=>$username),array('password'=>$password));
+		if($status!=FALSE){
+            foreach($status as $apps){
+                $session_data = array(
+                    'nama'=>$apps->nama
+				);
+                $this->session->set_userdata($session_data);
+            }
+			redirect("dashboard");
+        }else{
+            $this->index();
+        }
 	}
 }
