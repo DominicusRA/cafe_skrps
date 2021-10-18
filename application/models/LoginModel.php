@@ -21,24 +21,15 @@
                 return FALSE;
             }
         }
-        // function add($username,$password,$user){
+        function add($username,$password){
 
-        //     $cek_akun=$this->db->query("SELECT count(*) AS jumlah FROM user");
-        //     // $cek=$cek_akun->row()->jumlah;
-        //     if($cek_akun->row()->jumlah<5){
-        //         $cek=0;
-        //     }else{
-        //         $cek=$cek_akun->row()->jumlah;
-        //     }
-
-        //     if($cek==0){
-        //         $data = array(
-        //             'username'	=> 	$username,
-        //             'pass' 	=>	$password,
-        //             'user' => $user
-        //         );
-        //       $this->db->insert('user',$data);
-        //     }  
-        // }
+            
+                $data = array(
+                    'nama'	=> 'Admin',
+                    'username' 	=>	$username,
+                    'password' => $password);
+              $this->db->insert('admin',$data);
+            // }  
+        }
     }
 ?>

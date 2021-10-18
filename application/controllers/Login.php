@@ -38,4 +38,16 @@ class Login extends CI_Controller {
             $this->index();
         }
 	}
+	public function register(){
+		$this->load->view('registerview');
+	}
+	public function registeradd(){
+		$username = $this->input->post("username", TRUE);
+        $password = $this->input->post("password", TRUE);
+		// $password = md5($passworda);
+		// $username = md5($username);
+
+		$this->loginmodel->add($username,$password);
+		redirect('login');
+	}
 }
