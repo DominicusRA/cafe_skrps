@@ -20,10 +20,12 @@ class Login extends CI_Controller {
 	}
 	public function cek_log()
 	{
-		$username = $this->input->post("username", TRUE);
-        $password = $this->input->post("password", TRUE);
+		// $username = $this->input->post("username", TRUE);
+        // $password = $this->input->post("password", TRUE);
 		// $password = md5($password);
 		// $username = md5($username);
+		$password = md5($this->input->post("password", TRUE));
+		$username = md5($this->input->post("username", TRUE));
 
 		$status = $this->loginmodel->cek_login(array('username'=>$username),array('password'=>$password));
 		if($status!=FALSE){
@@ -42,10 +44,10 @@ class Login extends CI_Controller {
 		$this->load->view('registerview');
 	}
 	public function registeradd(){
-		$username = $this->input->post("username", TRUE);
-        $password = $this->input->post("password", TRUE);
-		// $password = md5($passworda);
-		// $username = md5($username);
+		// $username = $this->input->post("username", TRUE);
+        // $password = $this->input->post("password", TRUE);
+		$password = md5($this->input->post("password", TRUE));
+		$username = md5($this->input->post("username", TRUE));
 
 		$this->loginmodel->add($username,$password);
 		redirect('login');
