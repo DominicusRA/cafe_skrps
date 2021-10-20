@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin - Cafe</title>
+  <title>Dashboard || Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,6 +38,25 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="notifications-menu">
+            <a href="<?php echo base_url() ?>index.php/login_controler/log_out">
+              <i class="fa fa-power-off"></i>
+              Log Out
+            </a>
+          </li>
+          <!-- Messages: style can be found in dropdown.less-->
+          <!-- Notifications: style can be found in dropdown.less -->
+          
+          <!-- Tasks: style can be found in dropdown.less -->
+          <!-- User Account: style can be found in dropdown.less -->
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
       
 
       <!-- Messages Dropdown Menu -->
@@ -54,7 +73,7 @@
       <img src="<?php echo base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Cafe</span>
     </a>
-
+  
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -78,7 +97,7 @@
 
                
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link active">
+              <a href="<?php echo base_url() ?>index.php/dashboard_controler" class="nav-link active">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -96,13 +115,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href=# class="nav-link">
+                <a href="<?php echo base_url() ?>index.php/resep_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Resep</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href=# class="nav-link">
+                <a href="<?php echo base_url() ?>index.php/bahan_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bahan</p>
                 </a>
@@ -120,7 +139,7 @@
           </li> -->
           
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link">
               <i class="nav-icon fas fa-archive"></i>
               <p>
                 Stok
@@ -148,13 +167,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href=# class="nav-link">
+                <a href="<?php echo base_url() ?>index.php/transaksi_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penjualan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href=# class="nav-link">
+                <a href="<?php echo base_url() ?>index.php/stokmasuk_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok Masuk</p>
                 </a>
@@ -165,7 +184,7 @@
 
 
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="<?php echo base_url() ?>index.php/report_controler" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Report

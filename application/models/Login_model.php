@@ -1,5 +1,5 @@
 <?php
-    class LoginModel extends CI_MODEL{
+    class Login_model extends CI_MODEL{
         function cek_login($username,$password){
             $this->db->select('*');
             $this->db->from('admin');

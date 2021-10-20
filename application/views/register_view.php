@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dream Cafe || Log in</title>
+  <title>Dream Cafe || Register</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -22,9 +22,9 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your cafe business</p>
+      <p class="login-box-msg">Regist Your Account !!!</p>
 
-      <form action="<?php echo base_url() ?>index.php/login/cek_log" method="post">
+      <form action="<?php echo base_url() ?>index.php/login_controler/registeradd" method="post">
         <div class="input-group mb-3">
           <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
@@ -44,13 +44,14 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-sm">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <div class="col-sm">
-            <a href="<?php echo base_url()?>index.php/login/register">
-              <button type="button" class="btn btn-primary btn-block">Register</button>
+            <a href="<?php echo base_url()?>index.php/login_controler/index">
+              <button type="button" class="btn btn-danger btn-block">Batal</button>
             </a>
           </div>
+          <div class="col-sm">
+            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+          </div>
+
         </div>
       </form>
       <!-- /.social-auth-links -->
