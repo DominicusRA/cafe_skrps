@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bahan || Admin</title>
+  <title>Stok || Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -105,8 +105,8 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Master
@@ -120,8 +120,8 @@
                   <p>Resep</p>
                 </a>
               </li>
-              <li class="nav-item active">
-                <a href="<?php echo base_url() ?>index.php/bahan_controler" class="nav-link active">
+              <li class="nav-item">
+                <a href="<?php echo base_url() ?>index.php/bahan_controler" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bahan</p>
                 </a>
@@ -139,7 +139,7 @@
           </li> -->
           
           <li class="nav-item">
-            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link">
+            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link active">
               <i class="nav-icon fas fa-archive"></i>
               <p>
                 Stok
@@ -238,7 +238,7 @@
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Bahan</h3>
+                <h3 class="card-title">Data Resep</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
@@ -252,10 +252,10 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Kode Bahan</th>
-                    <th>Nama Bahan</th>
-                    <th>Satuan</th>
-                    <th>CSS grade</th>
+                    <th>Kode Menu</th>
+                    <th>Nama Menu</th>
+                    <th>-</th>
+                    <th>-</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -298,7 +298,7 @@
         </div>
         <!-- /.row -->
       </div>
-      <div class="modal fade" id="modal-data-bahan" data-backdrop="static">
+      <div class="modal fade" id="modal-data-bahan">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
