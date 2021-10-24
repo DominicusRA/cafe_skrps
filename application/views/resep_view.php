@@ -298,11 +298,11 @@
         </div>
         <!-- /.row -->
       </div>
-      <div class="modal fade" id="modal-data-bahan">
+      <div class="modal fade" id="modal-data-bahan" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Masukan Data Bahan</h4>
+              <h4 class="modal-title">Masukan Menu Resep</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -312,21 +312,102 @@
                 <!-- <p>One fine body&hellip;</p> -->
 
                 <div class="row">
-                <div class="col-3">
-                    <label for="bahan">Kode Bahan</label>
-                    <input type="text" name="bahan" class="form-control form-control-sm">
+                  <div class="container">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            <label for="bahan">Kode Menu</label>
+                            <input type="text" name="bahan" class="form-control form-control-sm" readonly>
+                          </div>
+                          <div class="col-5">
+                            <label for="bahan">Nama Menu</label>
+                            <input type="text" name="bahan" class="form-control form-control-sm">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-3">
-                    <label for="bahan">Bahan</label>
-                    <input type="text" name="bahan" class="form-control form-control-sm">
-                  </div>
-                  <div class="col-2">
-                    <label for="minimum_stok">Minimum Stok</label>
-                    <input type="text" name="minimum_stok" class="form-control form-control-sm">
-                  </div>
-                  <div class="col-3">
-                    <label for="satuan"> Satuan</label>
-                    <input type="text" name="satuan" class="form-control form-control-sm">
+                </div>
+
+                <div class="row">
+                  <div class="container">
+                    <div class="card">
+                      <div class="card-header">
+                        Ingredients
+                      </div>
+                      <div class="card-body">
+
+                        <div class="row">
+                          <div class="col-3">
+                            <label for="bahan">Nama Menu</label>
+                          </div>
+                          <div class="col-2">
+                            <label for="bahan">Jumlah</label>
+                          </div>
+                          <div class="col-3">
+                            <label for="bahan">Takaran</label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-3">
+                            <select class="form-control select2" style="width: 100%;">
+                              <option selected="selected">Alabama</option>
+                              <option>Alaska</option>
+                              <option>California</option>
+                              <option>Delaware</option>
+                              <option>Tennessee</option>
+                              <option>Texas</option>
+                              <option>Washington</option>
+                            </select>
+                          </div>
+                          <div class="col-2">
+                            <input type="text" name="kode_bahan" value=""class="form-control form-control-sm" >
+                          </div>
+                          <div class="col-3">
+                            <select class="form-control select2" style="width: 100%;">
+                              <option selected="selected">Alabama</option>
+                              <option>Alaska</option>
+                              <option>California</option>
+                              <option>Delaware</option>
+                              <option>Tennessee</option>
+                              <option>Texas</option>
+                              <option>Washington</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-3">
+                            <select class="form-control select2" style="width: 100%;">
+                              <option selected="selected">Alabama</option>
+                              <option>Alaska</option>
+                              <option>California</option>
+                              <option>Delaware</option>
+                              <option>Tennessee</option>
+                              <option>Texas</option>
+                              <option>Washington</option>
+                            </select>
+                          </div>
+                          <div class="col-2">
+                            <input type="text" name="kode_bahan" value=""class="form-control form-control-sm" >
+                          </div>
+                          <div class="col-3">
+                            <select class="form-control select2" style="width: 100%;">
+                              <option selected="selected">Alabama</option>
+                              <option>Alaska</option>
+                              <option>California</option>
+                              <option>Delaware</option>
+                              <option>Tennessee</option>
+                              <option>Texas</option>
+                              <option>Washington</option>
+                            </select>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>

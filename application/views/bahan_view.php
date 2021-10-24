@@ -255,39 +255,45 @@
                     <th>Kode Bahan</th>
                     <th>Nama Bahan</th>
                     <th>Satuan</th>
-                    <th>CSS grade</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
+
+                  <?php
+                  $nomor=0;
+                    foreach($bahan->result_array() as $data_bahan):
+                      $nomor++;
+                  ?>
+
                   <tr>
-                    <td>Misc</td>
-                    <td>IE Mobile</td>
-                    <td>Windows Mobile 6</td>
+                    <td><?=$nomor?></td>
+                    <td><?=$data_bahan['kode_bahan']?></td>
+                    <td><?=$data_bahan['nama_bahan']?></td>
                     <td>-</td>
-                    <td>C</td>
+                    <td>
+                      <!-- jika ada stok, button delete tidak muncul -->
+                      <button type="button" class="btn btn-danger" >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        <i class="fa fa-eye"></i>
+                      </button>
+                    </td>
                   </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>PSP browser</td>
-                    <td>PSP</td>
-                    <td>-</td>
-                    <td>C</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
-                  </tr>
+
+                  <?php
+                    endforeach  
+                  ?>
+                  
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>No</th>
+                    <th>Kode Bahan</th>
+                    <th>Nama Bahan</th>
+                    <th>Satuan</th>
+                    <th></th>
                   </tr>
                   </tfoot>
                 </table>
@@ -310,11 +316,28 @@
             <form action="<?php echo base_url() ?>index.php/bahan_controler/add" method="post">
               <div class="modal-body">
                 <!-- <p>One fine body&hellip;</p> -->
-
+                
                 <div class="row">
-                <div class="col-3">
+                  <?php
+                    // $kode_bahan="BHN/001";
+                    if($last_code->result_array()==null){
+                      $kode_bahan="BHN/001";
+                    }else{
+                      foreach($last_code->result_array() as $last_code):
+                        if($last_code['kode_bahan']!=null){
+                          $explode_kode = explode("/", $last_code['kode_bahan']);
+                          $last_explode_kode = end($explode_kode)+1;
+                          $last_explode_kode = sprintf("%03s", ($last_explode_kode));
+                          $kode_bahan="BHN/".$last_explode_kode;
+                        }else{
+                          $kode_bahan="BHN/001";
+                        }
+                      endforeach;
+                    }
+                  ?>
+                  <div class="col-3">
                     <label for="bahan">Kode Bahan</label>
-                    <input type="text" name="bahan" class="form-control form-control-sm">
+                    <input type="text" name="kode_bahan" value="<?=$kode_bahan?>"class="form-control form-control-sm" readonly>
                   </div>
                   <div class="col-3">
                     <label for="bahan">Bahan</label>
