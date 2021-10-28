@@ -381,7 +381,7 @@
                           <div class="col-3">
                             <select class="form-control select2" style="width: 100%;">
                               <option selected="selected">Alabama</option>
-                              <option>Alaska</option>
+                              <option>Aaska</option>
                               <option>California</option>
                               <option>Delaware</option>
                               <option>Tennessee</option>
