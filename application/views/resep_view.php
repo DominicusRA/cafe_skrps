@@ -317,7 +317,7 @@
                       <div class="card-body">
                         <div class="row">
                           <div class="col-3">
-                            <label for="bahan">Kodee Menu</label>
+                            <label for="bahan">Kode Menu</label>
                             <input type="text" name="bahan" class="form-control form-control-sm" readonly>
                           </div>
                           <div class="col-5">
