@@ -299,7 +299,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="<?php echo base_url() ?>index.php/bahan_controler/add" method="post">
+            <form id="form_resep" action="<?php echo base_url() ?>index.php/bahan_controler/add" method="post">
               <div class="modal-body">
                 <!-- <p>One fine body&hellip;</p> -->
 
@@ -329,59 +329,49 @@
                         Ingredients
                       </div>
                       <div class="card-body">
-                        <table>
+                        <table class="table table-borderless" >
                           <tr>
                             <td>
-                            <label for="bahan">Nama Bahan</label>
+                              <label for="bahan">Nama Bahan</label>
                             </td>
                             <td>
                               <label for="bahan">Jumlah</label>
                             </td>
                             <td>
-                            <label for="bahan">Takaran</label>
+                              <label for="bahan">Takaran</label>
+                            </td>
+                            <td>
+                              
                             </td>
                           </tr>
+                          <tr>
+                            <td>
+                            
+                              <select name="select_bahan" id="select_bahan" class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>
+                                <?php
+                                  foreach($bahan->result_array() as $data_bahan):
+                                ?>
+                                <option value="<?=$data_bahan['id_bahan']?>"><?=$data_bahan['nama_bahan']?></option>
+                                <?php
+                                  endforeach
+                                ?>
+                              </select>
+                            </td>
+                            <td>
+                              <input type="text" id="jumlah" name="jumlah" value=""class="form-control form-control-sm" >
+                            </td>
+                            <td>
+                              <input type="text" id="takaran" name="takaran" value=""class="form-control form-control-sm" >
+                            </td>
+                            <td>
+                              <div class="satuan">
+                                    Gr
+                              </div>
+                            </td>
+                          </tr>
+                          
                         </table>
-
-                        <!-- <div class="row">
-                          <div class="col-3">
-                            <label for="bahan">Nama Bahan</label>
-                          </div>
-                          <div class="col-2">
-                            <label for="bahan">Jumlah</label>
-                          </div>
-                          <div class="col-3">
-                            <label for="bahan">Takaran</label>
-                          </div>
-                        </div> -->
-
-                        <div class="row">
-                          <div class="col-3">
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Alabama</option>
-                              <option>Alaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
-                            </select>
-                          </div>
-                          <div class="col-2">
-                            <input type="text" name="kode_bahan" value=""class="form-control form-control-sm" >
-                          </div>
-                          <div class="col-3">
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Alabama</option>
-                              <option>Alaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
-                            </select>
-                          </div>
-                        </div>
                         <div class="row">
                           <div class="col-sm">
                             <div class="container">

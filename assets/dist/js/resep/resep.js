@@ -2,6 +2,27 @@ $('#add').on('click', function(){
     console.log('add row');
  })
 
+// $('#select_bahan').on('change', function(){
+//     console.log('ganti cuy');
+//     $data=[];
+//     // var table = document.getElementById(tableID);
+//     $('.satuan').replaceWith("Kg");
+//     console.log($(this).val());
+//     $data["satuan"]=$(this).val();
+
+//     $.ajax({
+//         type: "POST",
+//         url: "resep_controler/get_satuan",
+//         // data: form.serialize(), 
+//         data: $('#form_resep').serialize(),
+//         cache	: false,// serializes the form's elements.
+//         success: function(data)
+//         {
+//             // alert(data); // show response from the php script.
+//         }
+//       });
+// })
+
 function tambah()
 {
     // untuk ambil nilai pada input
