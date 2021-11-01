@@ -14,7 +14,7 @@ class Bahan_controler extends CI_Controller {
 
             $data['bahan']=$this->bahan_model->get_pembelian();
 			$data['last_code']=$this->bahan_model->get_code();
-            $this->load->view("bahan_view",$data);
+            $this->load->view("bahan/dashboard",$data);
 
         }else{
             $this->load->view('login_view');

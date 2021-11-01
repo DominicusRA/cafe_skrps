@@ -15,7 +15,7 @@ class Login_controler extends CI_Controller {
 			// echo $status;
             redirect("dashboard_controler");
         }else{
-            $this->load->view('login_view');
+            $this->load->view('login/login');
         }
 	}
 	public function cek_log()
@@ -45,7 +45,7 @@ class Login_controler extends CI_Controller {
         redirect("login_controler");
 	}
 	public function register(){
-		$this->load->view('register_view');
+		$this->load->view('login/register');
 	}
 	public function registeradd(){
 		// $username = $this->input->post("username", TRUE);

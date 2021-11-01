@@ -244,6 +244,12 @@
                     <i class="fa fa-plus"></i>
                     Tambah Data
                   </button>
+
+                  <button id="test_js" type="button" class="btn btn-default">
+                    <i class="fa fa-plus"></i>
+                    test js
+                  </button>
+
                 </div>
               </div>
               <!-- /.card-header -->
@@ -260,34 +266,20 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Misc</td>
-                    <td>IE Mobile</td>
-                    <td>Windows Mobile 6</td>
-                    <td>-</td>
-                    <td>C</td>
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>PSP browser</td>
-                    <td>PSP</td>
-                    <td>-</td>
-                    <td>C</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
                     <td>-</td>
                     <td>-</td>
-                    <td>U</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
                   </tr>
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>No</th>
+                    <th>Kode Menu</th>
+                    <th>Nama Menu</th>
+                    <th>-</th>
+                    <th>-</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -337,10 +329,23 @@
                         Ingredients
                       </div>
                       <div class="card-body">
+                        <table>
+                          <tr>
+                            <td>
+                            <label for="bahan">Nama Bahan</label>
+                            </td>
+                            <td>
+                              <label for="bahan">Jumlah</label>
+                            </td>
+                            <td>
+                            <label for="bahan">Takaran</label>
+                            </td>
+                          </tr>
+                        </table>
 
-                        <div class="row">
+                        <!-- <div class="row">
                           <div class="col-3">
-                            <label for="bahan">Nama Menu</label>
+                            <label for="bahan">Nama Bahan</label>
                           </div>
                           <div class="col-2">
                             <label for="bahan">Jumlah</label>
@@ -348,7 +353,7 @@
                           <div class="col-3">
                             <label for="bahan">Takaran</label>
                           </div>
-                        </div>
+                        </div> -->
 
                         <div class="row">
                           <div class="col-3">
@@ -378,30 +383,12 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-3">
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Alabama</option>
-                              <option>Aaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
-                            </select>
-                          </div>
-                          <div class="col-2">
-                            <input type="text" name="kode_bahan" value=""class="form-control form-control-sm" >
-                          </div>
-                          <div class="col-3">
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Alabama</option>
-                              <option>alaskaki</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
-                            </select>
+                          <div class="col-sm">
+                            <div class="container">
+                              <!-- button -->
+                              <button id="add" type="button" class="btn btn-primary" ><i class="fa fa-plus"></i></button>
+
+                            </div>
                           </div>
                         </div>
 
@@ -473,6 +460,11 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+<script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="<?php echo base_url() ?>assets/dist/js/resep/resep.js"></script>
+<!-- C:\xampp\htdocs\cafe_skrps\application\views\resep -->
+
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -484,6 +476,7 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     
   });
+  
 </script>
 </body>
 </html>
