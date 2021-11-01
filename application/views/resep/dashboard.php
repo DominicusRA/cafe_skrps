@@ -244,12 +244,6 @@
                     <i class="fa fa-plus"></i>
                     Tambah Data
                   </button>
-
-                  <button id="test_js" type="button" class="btn btn-default">
-                    <i class="fa fa-plus"></i>
-                    test js
-                  </button>
-
                 </div>
               </div>
               <!-- /.card-header -->
