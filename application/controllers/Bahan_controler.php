@@ -12,7 +12,7 @@ class Bahan_controler extends CI_Controller {
 	{
 		if($this->login_model->cek_session()){
 
-            $data['bahan']=$this->bahan_model->get_pembelian();
+            $data['bahan']=$this->bahan_model->get_bahan();
 			$data['last_code']=$this->bahan_model->get_code();
             $this->load->view("bahan/dashboard",$data);
 

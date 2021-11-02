@@ -5,7 +5,7 @@
             return TRUE;
             };
         }
-        function get_pembelian(){
+        function get_bahan(){
             return $this->db->query("SELECT * FROM bahan");
         }
         function get_code(){

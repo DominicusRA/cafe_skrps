@@ -261,7 +261,7 @@
                   <tbody>
 
                   <?php
-                  $nomor=0;
+                    $nomor=0;
                     foreach($bahan->result_array() as $data_bahan):
                       $nomor++;
                   ?>

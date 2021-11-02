@@ -250,22 +250,37 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Kode Menu</th>
-                    <th>Nama Menu</th>
-                    <th>-</th>
-                    <th>-</th>
-                  </tr>
+                    <tr>
+                      <th>No</th>
+                      <th>Kode Menu</th>
+                      <th>Nama Menu</th>
+                      <th>-</th>
+                      <th>-</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
+                    
+                    <?php
+                      $nomor=0;
+                      foreach($menu->result_array() as $data_menu):
+                        $nomor++;
+                    ?>
+                    <tr>
+                      <td><?=$nomor?></td>
+                      <td><?=$data_menu['kode_menu']?></td>
+                      <td><?=$data_menu['nama']?></td>
+                      <td>-</td>
+                      <td>
+                        <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
+                          <button type="button" class="btn btn-danger" >
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </a>
+                      </td>
+                    </tr>
+                    <?php
+                      endforeach  
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>
@@ -293,7 +308,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form id="form_resep" action="<?php echo base_url() ?>index.php/bahan_controler/add" method="post">
+            <form id="form_resep" action="<?php echo base_url() ?>index.php/resep_controler/add" method="post">
               <div class="modal-body">
                 <!-- <p>One fine body&hellip;</p> -->
 
@@ -302,13 +317,29 @@
                     <div class="card">
                       <div class="card-body">
                         <div class="row">
+                          <?php
+                            if($last_code->result_array()==null){
+                              $kode_menu="MNU/001";
+                            }else{
+                              foreach($last_code->result_array() as $last_code):
+                                if($last_code['kode_menu']!=null){
+                                  $explode_kode = explode("/", $last_code['kode_menu']);
+                                  $last_explode_kode = end($explode_kode)+1;
+                                  $last_explode_kode = sprintf("%03s", ($last_explode_kode));
+                                  $kode_menu="MNU/".$last_explode_kode;
+                                }else{
+                                  $kode_menu="MNU/001";
+                                }
+                              endforeach;
+                            }
+                          ?>
                           <div class="col-3">
                             <label for="bahan">Kode Menu</label>
-                            <input type="text" name="bahan" class="form-control form-control-sm" readonly>
+                            <input type="text" value="<?=$kode_menu?>" name="kode_menu" class="form-control form-control-sm" readonly>
                           </div>
                           <div class="col-5">
                             <label for="bahan">Nama Menu</label>
-                            <input type="text" name="bahan" class="form-control form-control-sm">
+                            <input type="text" name="menu" class="form-control form-control-sm">
                           </div>
                         </div>
                       </div>
