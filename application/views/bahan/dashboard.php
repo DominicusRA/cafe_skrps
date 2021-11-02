@@ -273,9 +273,11 @@
                     <td>-</td>
                     <td>
                       <!-- jika ada stok, button delete tidak muncul -->
-                      <button type="button" class="btn btn-danger" >
-                        <i class="fa fa-trash"></i>
-                      </button>
+                      <a href="<?php echo base_url() ?>index.php/bahan_controler/delete/<?=$data_bahan['id_bahan']?>">
+                        <button type="button" class="btn btn-danger" >
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </a>
                       <button type="button" class="btn btn-primary">
                         <i class="fa fa-eye"></i>
                       </button>

@@ -11,5 +11,8 @@
         function get_code(){
             return $this->db->query("SELECT kode_bahan FROM bahan ORDER BY kode_bahan DESC LIMIT 1");
         }
+        function delete_bahan($data){
+            return $this->db->delete('bahan', $data);
+        }
     }
 ?>

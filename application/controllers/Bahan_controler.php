@@ -38,4 +38,18 @@ class Bahan_controler extends CI_Controller {
 			$this->load->view('login_view');
 		}
 	}
+	public function delete($bahan){
+		// echo "asdad";
+		// echo $bahan;
+		$data=array(
+			'id_bahan' => $bahan
+		);
+		$status=$this->bahan_model->delete_bahan($data);
+		if($status==true){
+			redirect('bahan_controler');
+			
+		}else{
+			echo "gagal";
+		}
+	}
 }
