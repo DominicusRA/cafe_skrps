@@ -238,11 +238,11 @@
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Resep</h3>
+                <h3 class="card-title">Data Stok Bahan</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-data-bahan">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
-                    Tambah Data
+                    Stok Masuk
                   </button>
                 </div>
               </div>
@@ -252,42 +252,43 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Kode Menu</th>
-                    <th>Nama Menu</th>
-                    <th>-</th>
-                    <th>-</th>
+                    <th>Kode bahan</th>
+                    <th>Bahan</th>
+                    <th>Stok</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Misc</td>
-                    <td>IE Mobile</td>
-                    <td>Windows Mobile 6</td>
-                    <td>-</td>
-                    <td>C</td>
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>PSP browser</td>
-                    <td>PSP</td>
-                    <td>-</td>
-                    <td>C</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
-                  </tr>
+                  <?php
+                    $nomor=0;
+                    foreach($bahan->result_array() as $data_bahan):
+                      $nomor++;
+                  ?>
+
+                    <tr>
+                      <td><?=$nomor?></td>
+                      <td><?=$data_bahan['kode_bahan']?></td>
+                      <td><?=$data_bahan['nama_bahan']?></td>
+                      <td>0</td>
+                      <td>
+                        <!-- jika ada stok, button delete tidak muncul -->
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa fa-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+
+                  <?php
+                    endforeach  
+                  ?>
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>No</th>
+                    <th>Kode bahan</th>
+                    <th>Bahan</th>
+                    <th>Stok</th>
+                    <th></th>
                   </tr>
                   </tfoot>
                 </table>
@@ -302,33 +303,85 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Masukan Data Bahan</h4>
+              <h4 class="modal-title">Masukan Data Stok</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <form action="<?php echo base_url() ?>index.php/bahan_controler/add" method="post">
               <div class="modal-body">
-                <!-- <p>One fine body&hellip;</p> -->
-
+                
                 <div class="row">
-                <div class="col-3">
-                    <label for="bahan">Kode Bahan</label>
-                    <input type="text" name="bahan" class="form-control form-control-sm">
-                  </div>
-                  <div class="col-3">
-                    <label for="bahan">Bahan</label>
-                    <input type="text" name="bahan" class="form-control form-control-sm">
-                  </div>
-                  <div class="col-2">
-                    <label for="minimum_stok">Minimum Stok</label>
-                    <input type="text" name="minimum_stok" class="form-control form-control-sm">
-                  </div>
-                  <div class="col-3">
-                    <label for="satuan"> Satuan</label>
-                    <input type="text" name="satuan" class="form-control form-control-sm">
+                  <div class="container">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          
+                          <div class="col-3">
+                            <label for="bahan">Tanggal Stok Masuk</label>
+                            (masukan date picker BS)
+                            <!-- masuikan date picker boot strap -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="container">
+                    <div class="card">
+                      <div class="card-header">
+                        Detail Barang Masuk
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-borderless" >
+                          <tr>
+                            <td>
+                              <label for="bahan">Nama Bahan</label>
+                            </td>
+                            <td>
+                              <label for="bahan">Jumlah</label>
+                            </td>
+                            <td>
+                              <label for="bahan">Satuan</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                            
+                              <select name="select_bahan" id="select_bahan" class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>
+                              </select>
+                            </td>
+                            <td>
+                              <input type="text" id="jumlah" name="jumlah" value=""class="form-control form-control-sm" >
+                            </td>
+                            <td>
+                              <div class="satuan">Gr</div>
+                            </td>
+                          </tr>
+                          
+                        </table>
+                        <div class="row">
+                          <div class="col-sm">
+                            <div class="container">
+                              <!-- button -->
+                              <button id="add" type="button" class="btn btn-primary" ><i class="fa fa-plus"></i></button>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+
               </div>
               <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
