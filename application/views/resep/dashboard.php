@@ -363,10 +363,7 @@
                               <label for="bahan">Jumlah</label>
                             </td>
                             <td>
-                              <label for="bahan">Takaran</label>
-                            </td>
-                            <td>
-                              
+                              <label for="bahan">Satuan</label>
                             </td>
                           </tr>
                           <tr>
@@ -387,12 +384,7 @@
                               <input type="text" id="jumlah" name="jumlah" value=""class="form-control form-control-sm" >
                             </td>
                             <td>
-                              <input type="text" id="takaran" name="takaran" value=""class="form-control form-control-sm" >
-                            </td>
-                            <td>
-                              <div class="satuan">
-                                    Gr
-                              </div>
+                              <div class="satuan">Gr</div>
                             </td>
                           </tr>
                           

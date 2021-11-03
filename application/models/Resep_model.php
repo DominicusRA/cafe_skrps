@@ -6,10 +6,14 @@
         function get_code(){
             return $this->db->query("SELECT kode_menu FROM menu ORDER BY kode_menu DESC LIMIT 1");
         }
-        function add($data){
+        function add($data,$data_resep){
             if($this->db->insert('menu',$data)){
-            return TRUE;
+                return TRUE;
             };
+            // $this->db->insert('menu',$data);
+            // $this->db->query("SELECT id_menu FROM menu ORDER BY kode_menu DESC LIMIT 1");
+            // // $data_resep.=[]
+            // $this->db->insert('resep',$data_resep);
         }
         function get_menu(){
             return $this->db->query("SELECT * FROM menu");
