@@ -240,7 +240,7 @@
               <div class="card-header">
                 <h3 class="card-title">Data Resep</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-data-bahan">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
                     Tambah Data
                   </button>
@@ -254,8 +254,7 @@
                       <th>No</th>
                       <th>Kode Menu</th>
                       <th>Nama Menu</th>
-                      <th>-</th>
-                      <th>-</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -269,11 +268,15 @@
                       <td><?=$nomor?></td>
                       <td><?=$data_menu['kode_menu']?></td>
                       <td><?=$data_menu['nama']?></td>
-                      <td>-</td>
                       <td>
                         <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
+                          </button>
+                        </a>
+                        <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
+                          <button type="button" class="btn btn-info" >
+                            <i class="fa fa-eye"></i>
                           </button>
                         </a>
                       </td>
@@ -287,8 +290,7 @@
                     <th>No</th>
                     <th>Kode Menu</th>
                     <th>Nama Menu</th>
-                    <th>-</th>
-                    <th>-</th>
+                    <th></th>
                   </tr>
                   </tfoot>
                 </table>
