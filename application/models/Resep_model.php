@@ -6,9 +6,15 @@
         function get_code(){
             return $this->db->query("SELECT kode_menu FROM menu ORDER BY kode_menu DESC LIMIT 1");
         }
-        function add_menu($data){
+        function add_menu($data,$data_resep){
             if($this->db->insert('menu',$data)){
-                return $this->db->query("SELECT id_menu FROM menu ORDER BY kode_menu DESC LIMIT 1");
+                $id_menu = $this->db->insert_id();
+                $data_resep += ['id_menu' => $id_menu ];
+                if($this->db->insert('resep',$data_resep)){
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
                 return false;
             };
