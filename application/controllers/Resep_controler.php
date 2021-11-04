@@ -21,6 +21,7 @@ class Resep_controler extends CI_Controller {
 	public function add(){
 		$data=[];
 		if($this->login_model->cek_session()){
+
 			$data=array(
 				'nama' => $this->input->post('menu'),
 				'kode_menu' => $this->input->post('kode_menu')
@@ -29,8 +30,10 @@ class Resep_controler extends CI_Controller {
 				'id_bahan' => $this->input->post('select_bahan'),
 				'jumlah' => $this->input->post('jumlah')
 			);
-			$status=$this->resep_model->add($data,$data_resep);
-			if($status){
+
+			$status=$this->resep_model->add_menu($data);
+			
+			if($status!=false){
 				redirect('resep_controler');
 			}else{
 				echo '<script>alert("Penambahan Bahan Gagal !!!")</script>';
