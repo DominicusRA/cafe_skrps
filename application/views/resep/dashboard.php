@@ -274,7 +274,7 @@
                             <i class="fa fa-trash"></i>
                           </button>
                         </a>
-                        <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
+                        <a href="#">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
                           </button>
