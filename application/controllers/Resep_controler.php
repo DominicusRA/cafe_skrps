@@ -47,7 +47,6 @@ class Resep_controler extends CI_Controller {
 		$status=$this->resep_model->delete_menu($data);
 		if($status==true){
 			redirect('resep_controler');
-			
 		}else{
 			echo "gagal";
 		}
