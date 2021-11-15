@@ -356,7 +356,7 @@
                         Ingredients
                       </div>
                       <div class="card-body">
-                        <table class="table table-borderless" >
+                        <table class="table table-borderless" id="resep" >
                           <tr>
                             <td>
                               <label for="bahan">Nama Bahan</label>
@@ -369,7 +369,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>
+                            <td id="select_col">
                             
                               <select name="select_bahan" id="select_bahan" class="form-control select2" style="width: 100%;">
                                 <option selected="selected"></option>
@@ -383,7 +383,7 @@
                               </select>
                             </td>
                             <td>
-                              <input type="text" id="jumlah" name="jumlah" value=""class="form-control form-control-sm" >
+                              <input type="text" id="jumlah" name="jumlah[0]" value=""class="form-control form-control-sm" >
                             </td>
                             <td>
                               <div class="satuan">Gr</div>
