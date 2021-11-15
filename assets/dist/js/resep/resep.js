@@ -12,7 +12,7 @@ function add_row(){
     var cell3 = row.insertCell(2);
     var select = document.getElementById('select_col').innerHTML;
     cell1.innerHTML = select;
-    cell2.innerHTML = '<input type="text" id="jumlah" name="jumlah['+index+']" value=""class="form-control form-control-sm" >';
+    cell2.innerHTML = '<input type="number" id="jumlah" name="jumlah['+index+']" value=""class="form-control form-control-sm" >';
     cell3.innerHTML = 'Gr';
 }
 // $('#select_bahan').on('change', function(){

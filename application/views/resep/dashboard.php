@@ -383,7 +383,7 @@
                               </select>
                             </td>
                             <td>
-                              <input type="text" id="jumlah" name="jumlah[0]" value=""class="form-control form-control-sm" >
+                              <input type="number" id="jumlah" name="jumlah[0]" value=""class="form-control form-control-sm" >
                             </td>
                             <td>
                               <div class="satuan">Gr</div>

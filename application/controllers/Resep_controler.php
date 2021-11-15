@@ -27,7 +27,7 @@ class Resep_controler extends CI_Controller {
 			);
 			$data_resep=array(
 				'id_bahan' => $this->input->post('select_bahan'),
-				'takaran' => $this->input->post('jumlah')
+				'takaran' => $this->input->post('jumlah[0]')
 			);
 			$status=$this->resep_model->add_menu($data,$data_resep);
 			if($status){
