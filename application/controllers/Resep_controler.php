@@ -25,17 +25,25 @@ class Resep_controler extends CI_Controller {
 				'nama' => $this->input->post('menu'),
 				'kode_menu' => $this->input->post('kode_menu')
 			);
-			$data_resep=array(
-				'id_bahan' => $this->input->post('select_bahan'),
-				'takaran' => $this->input->post('jumlah[0]')
-			);
-			$status=$this->resep_model->add_menu($data,$data_resep);
+			$select_bahan = $this->input->post("select_bahan");
+			$jumlah = $this->input->post("jumlah");
+			if($this->db->insert('menu',$data)){
+                $id_menu = $this->db->insert_id();
+				for ($i = 0; $i < count($select_bahan); $i++) {
+					$data_resep[$i]=array(
+						'id_bahan' => $select_bahan[$i],
+						'takaran' => $jumlah[$i],
+						'id_menu' => $id_menu
+					);
+				}
+            };
+			$status=$this->resep_model->add_menu($data_resep);
 			if($status){
 				redirect('resep_controler');
 			}else{
 				echo '<script>alert("Penambahan Bahan Gagal !!!")</script>';
 				redirect('resep_controler');
-			}
+			}	
 		}else{
 			$this->load->view('login_view');
 		}
@@ -51,14 +59,4 @@ class Resep_controler extends CI_Controller {
 			echo "gagal";
 		}
 	}
-	// public function get_satuan(){
-	// 	$data = array(
-    //         'id_bahan'=>$this->input->post('select_bahan')
-	// 	);
-	// 	$status = $this->resep_model->get_satuan($data);
-	// 	echo $status;
-    //     // $nim = $this->input->post('nim_lama');
-    //     // $this->db->where('nim', $nim);
-    //     // $this->db->update('mahasiswa',$data);
-	// }
 }

@@ -369,9 +369,9 @@
                             </td>
                           </tr>
                           <tr>
-                            <td id="select_col">
+                            <td id="bahan_col">
                             
-                              <select name="select_bahan" id="select_bahan" class="form-control select2" style="width: 100%;">
+                              <select name="select_bahan[]" id="select_bahan[]" class="form-control select2" style="width: 100%;">
                                 <option selected="selected"></option>
                                 <?php
                                   foreach($bahan->result_array() as $data_bahan):
@@ -382,8 +382,8 @@
                                 ?>
                               </select>
                             </td>
-                            <td>
-                              <input type="number" id="jumlah" name="jumlah[0]" value=""class="form-control form-control-sm" >
+                            <td id="jumlah_col">
+                              <input type="number" id="jumlah[]" name="jumlah[]" value=""class="form-control form-control-sm" >
                             </td>
                             <td>
                               <div class="satuan">Gr</div>

@@ -10,9 +10,8 @@ function add_row(){
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    var select = document.getElementById('select_col').innerHTML;
-    cell1.innerHTML = select;
-    cell2.innerHTML = '<input type="number" id="jumlah" name="jumlah['+index+']" value=""class="form-control form-control-sm" >';
+    cell1.innerHTML = document.getElementById('bahan_col').innerHTML;
+    cell2.innerHTML = document.getElementById('jumlah_col').innerHTML;
     cell3.innerHTML = 'Gr';
 }
 // $('#select_bahan').on('change', function(){
