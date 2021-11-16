@@ -470,7 +470,7 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+<!-- new add on custon ja -->
 <script src="<?php echo base_url() ?>assets/dist/js/resep/resep.js"></script>
 <!-- C:\xampp\htdocs\cafe_skrps\application\views\resep -->
 

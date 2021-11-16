@@ -319,6 +319,14 @@
                           
                           <div class="col-3">
                             <label for="bahan">Tanggal Stok Masuk</label>
+
+                            <!-- <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                              <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                              <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                              </div>
+                            </div> -->
+
                             (masukan date picker BS)
                             <!-- masuikan date picker boot strap -->
                           </div>
@@ -335,7 +343,7 @@
                         Detail Barang Masuk
                       </div>
                       <div class="card-body">
-                        <table class="table table-borderless" >
+                        <table class="table table-borderless" id="stok" >
                           <tr>
                             <td>
                               <label for="bahan">Nama Bahan</label>
@@ -348,14 +356,21 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>
-                            
-                              <select name="select_bahan" id="select_bahan" class="form-control select2" style="width: 100%;">
+                            <td id="bahan_col">
+                              
+                              <select name="select_bahan[]" id="select_bahan[]" class="form-control select2" style="width: 100%;">
                                 <option selected="selected"></option>
+                                <?php
+                                  foreach($bahan->result_array() as $data_bahan):
+                                ?>
+                                <option value="<?=$data_bahan['id_bahan']?>"><?=$data_bahan['nama_bahan']?></option>
+                                <?php
+                                  endforeach
+                                ?>
                               </select>
                             </td>
-                            <td>
-                              <input type="text" id="jumlah" name="jumlah" value=""class="form-control form-control-sm" >
+                            <td id="jumlah_col">
+                              <input type="number" id="jumlah[]" name="jumlah[]" value=""class="form-control form-control-sm" >
                             </td>
                             <td>
                               <div class="satuan">Gr</div>
@@ -444,6 +459,8 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- new add on custom js -->
+<script src="<?php echo base_url() ?>assets/dist/js/stok/stok.js"></script>
 
 <script>
   $(function () {
@@ -456,6 +473,9 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     
   });
+  $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
 </script>
 </body>
 </html>
