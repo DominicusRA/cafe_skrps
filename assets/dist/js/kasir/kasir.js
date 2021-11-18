@@ -8,7 +8,10 @@ $('#menu').on('click', function(){
     var test3 = document.getElementById($(this)).getElementsByTagName('input').value;
     console.log(test3);
     // var date = $(this).val();
-})
+});
+$('#delete_cart').on('click', function(){
+    console.log("sdfsdf");
+});
 function add_row(){
     var table = document.getElementById("stok");
     var index=table.rows.length-1;

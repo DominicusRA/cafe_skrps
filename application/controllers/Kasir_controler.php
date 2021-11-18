@@ -32,6 +32,10 @@ class Kasir_controler extends CI_Controller {
 		}else{
 			redirect('kasir_controler');
 		}
+		// $this->session->unset_userdata('Cart');
+	}
+	public function delete_cart(){
 		$this->session->unset_userdata('Cart');
+		redirect('kasir_controler');
 	}
 }

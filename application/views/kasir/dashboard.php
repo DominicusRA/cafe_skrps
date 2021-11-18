@@ -100,6 +100,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card h-100">
               <div class="card-header">
                 <h5 class="card-title m-0">Nota</h5>
+                <div class="card-tools">
+                  <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="delete_cart">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </a>
+                </div>
               </div>
               <div class="card-body">
 
