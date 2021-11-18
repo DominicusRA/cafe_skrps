@@ -63,36 +63,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container overflow-auto">
         <div class="row">
           <div class="col-lg-8">
-            <div class="card card-row">
-              <div class="card-body overflow-auto">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="card-title m-0">Menu</h5>
+              </div>
+              <div class="card-body">
 
                 <div class="container">
+                  <?php
+                    $nomor=0;
+                    foreach($menu->result_array() as $data_menu):
+                      $nomor++;
+                  ?>
                   <div class="row">
-                    <?php
-                      $nomor=0;
-                      foreach($menu->result_array() as $data_menu):
-                        $nomor++;
-                    ?>
-                    <div class="col-lg-4" id="menu">
-                      <a href="<?php echo base_url() ?>index.php/kasir_controler/add_cart/<?=$data_menu['id_menu']?>">
-                        <div class="card">
-                          <img src="<?php echo base_url() ?>assets/dist/img/default-150x150.png" alt="" class="card-img-top">
-                          <div class="card-body">
-
-                            <!-- <input type="text" id="menuu" name="id_menu" value="<?=$data_menu['id_menu']?>"> -->
-
-                            <?=$data_menu['nama']?>
+                    <div class="col-sm">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="float-left">
+                            <?= $data_menu['nama']?>
+                          </div>
+                          <div class="float-right">
+                            Rp 12.345
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </div>
-                    <?php
-                      endforeach  
-                    ?>
                   </div>
+                  <?php
+                    endforeach  
+                  ?>
                 </div>
+
               </div>
+              <!-- <div class="card-footer">
+                hoooo
+              </div> -->
             </div>
+
           </div>
           <!-- /.col-md-6 -->
           
@@ -103,23 +110,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="card-body">
 
-                <div class="container" id="nota">
-                  <?php
-                    $cart=array();
-                    $cart=$this->session->userdata('Cart');
-                    // echo count($cart);
-                    if($cart!=null){
-                      foreach($cart as $data_cart):
-                        // echo $data_cart;
-                        foreach($menu->result_array() as $data_menu):
-                          if($data_menu['id_menu']==$data_cart){
-                  ?>
+                <div class="container">
                   <div class="row">
                     <div class="col-sm">
                       <div class="card">
                         <div class="card-body">
                           <div class="float-left">
-                            <?=$data_menu['nama']?>
+                            KOPI TUBRUK
                           </div>
                           <div class="float-right">
                             Rp 11.000
@@ -128,13 +125,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       </div>
                     </div>
                   </div>
-                  <?php
-                          }
-                        endforeach;
-                      endforeach;
-
-                    }
-                  ?>
+                  <div class="row">
+                    <div class="col-sm">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="float-left">
+                            CAPPICIN
+                          </div>
+                          <div class="float-right">
+                            Rp 11.000
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -175,7 +179,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
-
-<script src="<?php echo base_url() ?>assets/dist/js/kasir/kasir.js"></script>
 </body>
 </html>
