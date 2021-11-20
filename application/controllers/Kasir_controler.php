@@ -38,4 +38,35 @@ class Kasir_controler extends CI_Controller {
 		$this->session->unset_userdata('Cart');
 		redirect('kasir_controler');
 	}
+	public function bayar(){
+		// echo $this->session->/
+		$cart_data=[];
+		$data_nota=array(
+			'tanggal' => date("Y/m/d"),
+			'no_nota' => '********'
+		);
+		
+		if($this->db->insert('nota',$data_nota)){
+			$id_nota = $this->db->insert_id();
+			$cart_data = $this->session->userdata('Cart');
+
+			for ($i = 0; $i < count($cart_data); $i++) {
+				$data_cart[$i]=array(
+					'id_nota' => $id_nota,
+					'id_menu' => $cart_data[$i]
+				);
+			}
+			$status=$this->kasir_model->add_cart($data_cart);
+		}
+		if($status){
+			// print_r($cart_data);
+			// echo "<br>";
+			// print_r($data_cart);
+			// echo "<br>".count($cart_data);
+			// // echo $cart_data[1];
+			$this->session->unset_userdata('Cart');
+			redirect('kasir_controler');
+
+		}
+	}
 }

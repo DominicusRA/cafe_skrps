@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         $nomor++;
                     ?>
                     <div class="col-lg-4" id="menu">
-                      <a href="<?php echo base_url() ?>index.php/kasir_controler/add_cart/<?=$data_menu['id_menu']?>">
+                      <a href="<?php echo base_url() ?>index.php/kasir_controler/add_cart/<?=$data_menu['id_menu']?>" style="color: black">
                         <div class="card">
                           <img src="<?php echo base_url() ?>assets/dist/img/default-150x150.png" alt="" class="card-img-top">
                           <div class="card-body">
@@ -101,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-header">
                 <h5 class="card-title m-0">Nota</h5>
                 <div class="card-tools">
-                  <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
+                  <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart" >
                     <button type="button" class="btn btn-outline-danger btn-sm" id="delete_cart">
                       <i class="fa fa-trash"></i>
                     </button>
@@ -121,20 +121,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         foreach($menu->result_array() as $data_menu):
                           if($data_menu['id_menu']==$data_cart){
                   ?>
-                  <div class="row">
-                    <div class="col-sm">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="float-left">
-                            <?=$data_menu['nama']?>
-                          </div>
-                          <div class="float-right">
-                            Rp 11.000
+                  <a href="" style="color: black">
+                    <div class="row">
+                      <div class="col-sm">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="float-left">
+                              <?=$data_menu['nama']?>
+                            </div>
+                            <div class="float-right">
+                              Rp 11.000
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+
+                  </a>
                   <?php
                           }
                         endforeach;
@@ -145,9 +148,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
 
               </div>
-              <!-- <div class="card-footer">
-                hoooo
-              </div> -->
+              <div class="card-footer">
+                
+                <a href="<?php echo base_url() ?>index.php/kasir_controler/bayar" >
+                  <button type="button" class="btn btn-success btn-block" id="delete_cart">
+                    <!-- <i class="fa fa-trash"></i> -->
+                    Bayar
+                  </button>
+                </a>
+              </div>
             </div>
 
           </div>
