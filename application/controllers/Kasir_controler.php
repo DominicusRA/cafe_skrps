@@ -66,7 +66,6 @@ class Kasir_controler extends CI_Controller {
 			// // echo $cart_data[1];
 			$this->session->unset_userdata('Cart');
 			redirect('kasir_controler');
-
 		}
 	}
 }
