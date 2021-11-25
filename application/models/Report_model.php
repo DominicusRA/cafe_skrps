@@ -1,13 +1,29 @@
 <?php
     class Report_model extends CI_MODEL{
-        function get_menu(){
-            return $this->db->query("SELECT * FROM menu");
+        function get_report(){
+            
+            $this->db->select('*');
+            $this->db->from('report');
+            $this->db->order_by('periode', 'DESC');
+            return $this->db->get();
         }
-        function add_cart($data_cart){
-            if($this->db->insert_batch('menu_nota',$data_cart)){
-                return true;
+
+        function get_new_report(){
+            $data=[];
+            $date=date('m-Y', strtotime('-1 month'));
+            $kode_report= "RPT/".date('m',strtotime('-1 month'))."/".date('Y');
+
+            $this->db->select('*');
+            $this->db->from('report');
+            $this->db->where('periode', $date);
+            $result = $this->db->count_all_results();
+            if($result>0){
+                return null;
+                
             }else{
-                return false;
+                $data['kode_report']=$kode_report;
+                $data['date']=$date;
+                return $data;
             }
         }
     }
