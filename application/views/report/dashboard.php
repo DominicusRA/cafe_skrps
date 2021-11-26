@@ -293,7 +293,7 @@
                       <td><?=$new_report['kode_report']?></td>
                       <td><?=$new_report['date']?></td>
                       <td>
-                        <a href="#">
+                        <a href="<?php echo base_url() ?>index.php/report_controler/create_report/">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                           </button>

@@ -17,4 +17,19 @@ class Report_controler extends CI_Controller {
             $this->load->view('login/login.php');
         }
 	}
+	public function create_report(){
+		// if($this->report_model->create_report()){
+		// 	echo "berhasil";
+		// }
+		echo $this->report_model->create_report();
+		// $test=$this->report_model->get_report();
+		// $query['apani'] = $this->db->get('menu');
+		// // print_r($this->db->last_query());
+		// // print_r($test); 
+		// // echo count($query);
+		// foreach($query['apani'] as $data_menu){
+		// 	print_r($data_menu);
+		// }
+
+	}
 }

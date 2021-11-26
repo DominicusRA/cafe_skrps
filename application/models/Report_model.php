@@ -26,5 +26,26 @@
                 return $data;
             }
         }
+        function create_report(){
+            $this->db->select('*');
+            $this->db->from('menu');
+            $menu=$this->db->get();
+            foreach($menu->result_array() as $data_menu){
+                echo "<br>";
+                echo $data_menu['id_menu'];
+
+                // $this->db->select('*');
+                $this->db->select_sum('jumlah');
+                $this->db->from('menu_nota');
+                $this->db->where('id_menu', $data_menu['id_menu']);
+                $count_jual=$this->db->get();
+                foreach($count_jual->result_array() as $data_count_jual){
+                    echo $data_count_jual['jumlah'];
+                }
+//                 SELECT id FROM things 
+//    WHERE MONTH(happened_at) = 1 AND YEAR(happened_at) = 2009
+            }
+        }
+
     }
 ?>
