@@ -101,11 +101,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-header">
                 <h5 class="card-title m-0">Nota</h5>
                 <div class="card-tools">
+                  <form action="<?php echo base_url() ?>index.php/kasir_controler/bayar" method="post">
+                  <!-- <input type="date" class="form-control" name="tanggal_order"> -->
+                  
                   <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart" >
                     <button type="button" class="btn btn-outline-danger btn-sm" id="delete_cart">
                       <i class="fa fa-trash"></i>
                     </button>
                   </a>
+                  <!-- <a href="<?php echo base_url() ?>index.php/kasir_controler/nota_maker" >
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="delete_cart">
+                      <i >MUEHEHEH</i>
+                    </button>
+                  </a> -->
                 </div>
               </div>
               <div class="card-body">
@@ -150,12 +158,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="card-footer">
                 
-                <a href="<?php echo base_url() ?>index.php/kasir_controler/bayar" >
-                  <button type="button" class="btn btn-success btn-block" id="delete_cart">
+                <!-- <a href="<?php echo base_url() ?>index.php/kasir_controler/bayar" > -->
+                  <button type="submit" class="btn btn-success btn-block" id="delete_cart">
+                  <form>
                     <!-- <i class="fa fa-trash"></i> -->
                     Bayar
                   </button>
-                </a>
+                <!-- </a> -->
               </div>
             </div>
 

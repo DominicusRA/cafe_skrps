@@ -28,13 +28,19 @@
         }
         function create_report(){
             $x=array(-4,-3,-2,-1,0,1,2,3,4);
+            $x2=array();
             $y=array();
+
+            for($i=0;$i<count($x);$i++){
+                array_push($x2,pow($x[$i],2));
+            }
 
             $this->db->select('*');
             $this->db->from('menu_nota');
             $this->db->join('nota', 'nota.id_nota=menu_nota.id_nota');
             $this->db->where('nota.id_nota',15);
             $join=$this->db->get();
+
             foreach($join->result_array() as $test){
                 // print_r($test);
                 // echo "<br>";
@@ -49,6 +55,7 @@
             foreach($menu->result_array() as $data_menu){
                 // echo $data_menu['id_menu']."<br>";
                 $data_jual=array();
+                $test_bulan=12;
                 for($bulan=1;$bulan<=9;$bulan++){
                     // echo $bulan;
                     // foreach($menu->result_array() as $data_menu){
@@ -56,9 +63,10 @@
                     $this->db->from('menu_nota');
                     $this->db->join('nota', 'nota.id_nota=menu_nota.id_nota');
                     $this->db->where('menu_nota.id_menu', $data_menu['id_menu']);
-                    // $this->db->where('MONTH(nota.tanggal)',date('m', strtotime('-'.$bulan.' month')));
-                    $this->db->where('MONTH(nota.tanggal)',date('m'));
+                    $this->db->where('MONTH(nota.tanggal)',date('m', strtotime('-'.$bulan.' month')));
+                    // $this->db->where('MONTH(nota.tanggal)',$test_bulan);
                     $this->db->where('YEAR(nota.tanggal)',date('Y'));
+                    // $this->db->where('YEAR(nota.tanggal)','2020');
                     $count_jual=$this->db->get();
                     $i=0;
                     foreach($count_jual->result_array() as $data_count_jual){
@@ -69,62 +77,93 @@
                     }
                     // }    
                     // array_push($y,$data_jual);
+                    $test_bulan--;
                 }
                 $y+=array($data_menu['id_menu']=>$data_jual);
             }
 
-            echo "<pre>";
-            echo "y : ";
-            print_r($y);
-            echo "x : ";
-            print_r($x);
-            echo "</pre>";
+            // echo "<pre>";
+            // echo "y : ";
+            // print_r($y);
+            // echo "x : ";
+            // print_r($x);
+            // echo "</pre>";
             
             $xy=array();
-            $x2=array();
-            $ty=array();
+            
+            $total_y=array();
+            $total_xy=array();
+            $a=array();
+            $b=array();
+            $hasil=array();
             // create isi XY //
             foreach($menu->result_array() as $data_menu){
                 $data_xy=array();
-                $total_y=0;
+                $t_y=0;
                 for($i=0;$i<9;$i++){
                     array_push($data_xy,$y[$data_menu['id_menu']][$i]*$x[$i]);
-                    $total_y+=$y[$data_menu['id_menu']][$i];
+                    $t_y+=$y[$data_menu['id_menu']][$i];
                     
                     
                 }
                 $xy+=array($data_menu['id_menu']=>$data_xy);
-                $ty+=array($data_menu['id_menu']=>$total_y);
+                $total_y+=array($data_menu['id_menu']=>$t_y);
+                $total_xy+=array($data_menu['id_menu']=>array_sum($xy[$data_menu['id_menu']]));
+                $a+=array($data_menu['id_menu']=>$total_y[$data_menu['id_menu']]/count($x));
+                $b+=array($data_menu['id_menu']=>$total_xy[$data_menu['id_menu']]/array_sum($x2));
+                $hasil+=array($data_menu['id_menu']=>$a[$data_menu['id_menu']]+$b[$data_menu['id_menu']]*5);
+                // array_push($hasil,$a[$data_menu['id_menu']]+$b[$data_menu['id_menu']]*5);
+                // $hasil=$aa+$bb*5;
+
 
             }
             
-            for($i=0;$i<count($x);$i++){
-                // echo $i;
-                // echo$data_jual_all[$i][23]*$x[$i];
-                array_push($x2,pow($x[$i],2));
-                // echo pow($x[$i],2);
-
-
+            //////////////////////////////////////////////////////////////
+            // JANGAN DI HAPUS
+            // untuk cek proses data
+            // echo "<pre>";
+            // echo "xy : ";
+            // print_r($xy);
+            // echo "X^2 : ";
+            // print_r($x2);
+            // echo "Total y : ";
+            // print_r($total_y);
+            // echo "Total xy : ";
+            // print_r($total_xy);
+            // echo "A : ";
+            // print_r($a);
+            // echo "B : ";
+            // print_r($b);
+            // echo "Total x^2 : ".array_sum($x2)."<br>";
+            // echo "HASIL : ";
+            // print_r($hasil);
+            // echo "</pre>";
+            // echo count($hasil);
+            //////////////////////////////////////////////////////////////
+            $data_header_report=array(
+                'periode'=>date('m-Y', strtotime('-1 month')),
+                'kode_report'=> "RPT/".date('m',strtotime('-1 month'))."/".date('Y')
+            );
+            if($this->db->insert('report',$data_header_report)){
+                $id_report = $this->db->insert_id();
+                $i=0;
+                foreach($menu->result_array() as $data_menu){
+                    // for ($i = 0; $i < count($hasil); $i++) {
+                    $data_hasil[$i]=array(
+                        'id_report' => $id_report,
+                        'id_bahan' => $data_menu['id_menu'],
+                        'jumlah_prediksi' => round($hasil[$data_menu['id_menu']])
+                    );
+                    // }
+                    $this->db->insert('report_menu',$data_hasil[$i]);
+                    $i++;
+                }
             }
-
-            echo "<pre>";
-            echo "xy : ";
-            print_r($xy);
-            echo "X^2 : ";
-            print_r($x2);
-            echo "ty : ";
-            print_r($ty);
-            echo "</pre>";
-            echo "Total xy : ".array_sum($xy[23]),"<br>";
-            echo "Total x^2 : ".array_sum($x2)."<br>";
-            $a=$ty[23]/count($x);
-            $b=array_sum($xy)/array_sum($x2); //masih salah
-            $hasil=$a+$b*5;
-            echo"<br><br>";
-            echo "A : ".$a."<br>";
-            echo "B : ".$b."<br>";
-            echo "Hasil : ".$hasil."<br>";
+            // echo "<pre>";
+            // print_r($data_hasil);
+            // echo "</pre>";
+            // return true;
         }
-
+        
     }
 ?>

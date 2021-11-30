@@ -21,7 +21,9 @@ class Report_controler extends CI_Controller {
 		// if($this->report_model->create_report()){
 		// 	echo "berhasil";
 		// }
-		echo $this->report_model->create_report();
+		if($this->report_model->create_report()){
+			redirect('report_controler');
+		}
 		// $test=$this->report_model->get_report();
 		// $query['apani'] = $this->db->get('menu');
 		// // print_r($this->db->last_query());
