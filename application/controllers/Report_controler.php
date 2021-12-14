@@ -34,4 +34,8 @@ class Report_controler extends CI_Controller {
 		// }
 
 	}
+	public function report_maker(){
+		$this->report_model->report_maker();
+
+	}
 }

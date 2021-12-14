@@ -41,6 +41,24 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <select name="akses" id="akses" class="form-control select2" style="width: 100%;">
+            <option selected="selected"></option>
+            <?php
+              foreach($akses->result_array() as $data_akses):
+            ?>
+            <option value="<?=$data_akses['id_akses']?>"><?=$data_akses['akses']?></option>
+            <?php
+              endforeach
+            ?>
+          </select>
+          <!-- <input type="password" name="password" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div> -->
+        </div>
         <div class="row">
           <!-- /.col -->
           <div class="col-sm">
