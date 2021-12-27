@@ -319,16 +319,7 @@
                           
                           <div class="col-3">
                             <label for="bahan">Tanggal Stok Masuk</label>
-
-                            <!-- <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                              <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                              <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                              </div>
-                            </div> -->
-
-                            (masukan date picker BS)
-                            <!-- masuikan date picker boot strap -->
+                            <input type="date" class="form-control datetimepicker-input" id="tanggal" name="tanggal">
                           </div>
                         </div>
                       </div>
