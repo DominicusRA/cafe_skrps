@@ -269,7 +269,7 @@
                       <td><?=$nomor?></td>
                       <td><?=$data_bahan['kode_bahan']?></td>
                       <td><?=$data_bahan['nama_bahan']?></td>
-                      <td>0</td>
+                      <td><?=$data_bahan['jumlah']?></td>
                       <td>
                         <!-- jika ada stok, button delete tidak muncul -->
                         <button type="button" class="btn btn-primary">
@@ -308,7 +308,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="<?php echo base_url() ?>index.php/bahan_controler/add" method="post">
+            <form action="<?php echo base_url() ?>index.php/stok_controler/add_stok" method="post">
               <div class="modal-body">
                 
                 <div class="row">
@@ -319,7 +319,7 @@
                           
                           <div class="col-3">
                             <label for="bahan">Tanggal Stok Masuk</label>
-                            <input type="date" class="form-control datetimepicker-input" id="tanggal" name="tanggal">
+                            <input type="date" class="form-control datetimepicker-input" id="tanggal" name="tanggal" >
                           </div>
                         </div>
                       </div>

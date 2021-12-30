@@ -8,8 +8,7 @@ class Stok_controler extends CI_Controller {
 		$this->load->model('stok_model');
 		$this->load->model('login_model');
     }
-	public function index()
-	{
+	public function index(){
 		// $this->load->view('stok/dashboard');
 
 		if($this->login_model->cek_session()){
@@ -21,4 +20,42 @@ class Stok_controler extends CI_Controller {
             $this->load->view('login/login');
         }
 	}
+	public function add_stok(){
+
+		$tanggal=$this->input->post("tanggal");
+		$select_bahan = $this->input->post("select_bahan");
+		$jumlah = $this->input->post("jumlah");
+		for ($i = 0; $i < count($select_bahan); $i++) {
+			$data_stok[$i]=array(
+				'tanggal' => $tanggal,
+				'id_bahan' => $select_bahan[$i],
+				'jumlah' => $jumlah[$i]
+			);
+		}
+		// echo "ini jumlah indeknya ".count($data_stok);
+		$status=$this->stok_model->add_stok($data_stok);
+		if($status){
+			redirect('stok_controler');
+		}else{
+			redirect('stok_controler');
+		}
+	}
+	public function stok_master_maker(){
+
+		$this->db->select('*');
+		$this->db->from('bahan');
+		$bahan=$this->db->get();
+
+		foreach($bahan->result_array() as $bahan){
+
+			// $data_tanggal['tanggal'];
+			$data_stok=array(
+				'id_bahan'=>$bahan['id_bahan'],
+				'jumlah'=> 0
+			);
+
+			$this->db->insert('stok',$data_stok);
+
+		}
+}
 }
