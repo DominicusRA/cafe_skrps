@@ -4,9 +4,7 @@
             return $this->db->query("SELECT * FROM menu");
         }
         function add_cart($data_cart){
-            // if($this->db->insert_batch('menu_nota',$data_cart)){
-            if(true){
-                echo "<pre>";
+            if($this->db->insert_batch('menu_nota',$data_cart)){
                 for ($i = max(array_keys($data_cart)); $i >= 0; $i--) {
 
                     print_r($data_cart[$i]);
@@ -34,13 +32,9 @@
                     }
                     
                 }
-                // mengurangi stok menurut pemesanan
-                // echo "<pre>";
-                // print_r($data_cart);
-                echo "</pre>";
-                // return true;
+                return true;
             }else{
-                // return false;
+                return false;
             }
         }
     }
