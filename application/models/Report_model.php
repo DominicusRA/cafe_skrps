@@ -26,6 +26,90 @@
                 return $data;
             }
         }
+        function get_data_bahan(){
+            $this->db->select('*');
+            $this->db->from('bahan');
+            return $this->db->get();
+
+        }
+        function get_data_report($id_report){
+            $data=array();
+            // echo "<pre>";
+            // echo "<br> masuk ke model get data report".$id_report;
+
+            $data_resep_array=array();
+            $data_bahan_array=array();
+
+            // buat memori array bahan
+            $this->db->select('*');
+            $this->db->from('stok');
+            $this->db->join('bahan','bahan.id_bahan=stok.id_bahan');
+            $data['data_stok']=$this->db->get();
+
+            $this->db->select('*');
+            $this->db->from('bahan');
+            $data_bahan=$this->db->get();
+            $data['data_bahan']=$data_bahan;
+            foreach($data_bahan->result_array() as $data_bahan){
+                $data_bahan_array+=array($data_bahan['id_bahan']=>0);
+            }
+
+            // echo "ini bagian resep";
+            // $this->db->select('*');
+            // $this->db->from('resep');
+            // $this->db->join('menu','menu.id_menu=resep.id_menu');
+            // $this->db->where('id_menu',$id_menu);
+            // $data_resep=$this->db->get();
+            // foreach($data_resep->result_array() as $data_resep){
+            //     print_r($data_resep);
+            // }
+            // echo "end off resep";
+
+            $this->db->select('*');
+            $this->db->from('report_menu');
+            $this->db->join('menu', 'menu.id_menu=report_menu.id_menu');
+            $this->db->where('id_report',$id_report);
+            $data_report=$this->db->get();
+            $data['data_report']=$data_report;
+            // foreach($bahan->result_array() as $bahan){
+            
+            // print_r($data_bahan_array);
+            foreach($data_report->result_array() as $data_report){
+                // echo $data_report['id_menu']."<br>";
+                // echo $data_report['nama']."<br>";
+
+                // echo "<br>____________________data report____________________<br> ";
+                // print_r($data_report);
+                // echo "<br>";
+
+                $this->db->select('*');
+                $this->db->from('resep');
+                $this->db->join('menu','menu.id_menu=resep.id_menu');
+                $this->db->where('resep.id_menu',$data_report['id_menu']);
+                $data_resep=$this->db->get();
+                // echo "<br>__________data resep__________<br> ";
+                foreach($data_resep->result_array() as $data_resep){
+                    $get_bahan=$data_bahan_array[$data_resep['id_bahan']];
+                    // print_r($data_resep);
+                    $jumlah_bahan=0;
+                    $jumlah_bahan=$data_report['jumlah_prediksi']*$data_resep['takaran'];
+                    if($jumlah_bahan>0){
+                        // $get_bahan=+$data_report['jumlah_prediksi']*$data_resep['takaran'];
+                        $data_bahan_array[$data_resep['id_bahan']]=$data_bahan_array[$data_resep['id_bahan']]+$jumlah_bahan;
+                    }
+                    // echo "hasilnya :".$jumlah_bahan."<br>";
+                    // echo "array hasilnya :".$data_bahan_array[$data_resep['id_bahan']]."<br>";
+                }
+                // echo "<br>";
+            }
+            // print_r($data_bahan_array);
+            $data['data_bahan_prediksi']=$data_bahan_array;
+            // echo"<br> ini data yang sudah di masukan <br>";
+            // print_r($data);
+            // echo "</pre>";
+            return $data;
+
+        }
         function create_report(){
             $x=array(-4,-3,-2,-1,0,1,2,3,4);
             $x2=array();

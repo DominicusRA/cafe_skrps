@@ -34,8 +34,17 @@ class Report_controler extends CI_Controller {
 		// }
 
 	}
+	public function see_report($id_report){
+		// echo "masuk see_report ".$id_report;
+		$data['data_detail_report']=$this->report_model->get_data_report($id_report);
+		$data['data_bahan']=$this->report_model->get_data_bahan();
+		$this->load->view("report/detail",$data);
+
+
+	}
 	public function report_maker(){
 		$this->report_model->report_maker();
 
 	}
+
 }

@@ -253,63 +253,79 @@
                     <tr>
                       <th>No</th>
                       <th>Kode Report</th>
-                      <th>Periode Penjualan</th>
+                      <th>Stok Aktual</th>
+                      <th>Jumlah Akan Terpakai</th>
+                      <th>Saran Stok</th >
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     
                     <?php
+                    // foreach($data_detail_report['data_bahan']->result_array()as $dataa){
+
+                    // }
                       $nomor=0;
-                      foreach($report->result_array() as $data_report):
+                      // foreach($data_detail_report['data_stok']->result_array() as $data_stok){
+                      //   echo $data_stok['id_stok'];
+
+                      // }
+                      // echo "<pre>";
+                      // print_R($data_stok);
+                      // echo "<br>-------------------------------------------------------<br>";
+                      // // print_r($data_bahan);
+                      // echo "</pre>";
+                      foreach($data_detail_report['data_stok']->result_array() as $data_bahan):
+                        // $data_detail_report['data_bahan_prediksi']['25'];
                         $nomor++;
                     ?>
                     <tr>
                       <td><?=$nomor?></td>
-                      <td><?=$data_report['kode_report']?></td>
-                      <td><?=$data_report['periode']?></td>
+                      <td><?=$data_bahan['nama_bahan']?></td>
+                      <td><?=$data_bahan['jumlah']?></td>
+                      <td><?=$data_detail_report['data_bahan_prediksi'][$data_bahan['id_bahan']];?></td>
+                      <td>
+                        <?php
+                          // $saran_stok=0;
+                          $saran_stok=$data_detail_report['data_bahan_prediksi'][$data_bahan['id_bahan']]-$data_bahan['jumlah'];
+                          if($saran_stok>=0){
+                            echo $saran_stok;
+                          }else{
+                            echo 0;
+                          }
+                        ?>
+                      </td>
                       <td>
                         <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
                           </button>
                         </a>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/see_report/<?=$data_report['id_report']?>">
+                        <!-- <a href="<?php echo base_url() ?>index.php/report_controler/see_report/<?=$data_report['id_report']?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
                           </button>
-                        </a>
+                        </a> -->
                       </td>
                     </tr >
                     <?php
                       endforeach;
                       $nomor++;
-                      if($new_report!=null){
+                      // if($new_report!=null){
 
                       
                     ?>
-                    <tr class="table-info">
-                      <td><?=$nomor?></td>
-                      <td><?=$new_report['kode_report']?></td>
-                      <td><?=$new_report['date']?></td>
-                      <td>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/create_report/">
-                          <button type="button" class="btn btn-info" >
-                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                          </button>
-                        </a>
-                      </td>
-                    </tr>
-                    <?php
-                      }  
-                    ?>
+                    
+                    
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>No</th>
-                    <th>Kode Menu</th>
-                    <th>Nama Menu</th>
-                    <th></th>
+                  <th>No</th>
+                      <th>Kode Report</th>
+                      <th>Stok Aktual</th>
+                      <th>Jumlah Akan Terpakai</th>
+                      <th>Saran Stok</th >
+                      <th></th>
                   </tr>
                   </tfoot>
                 </table>
