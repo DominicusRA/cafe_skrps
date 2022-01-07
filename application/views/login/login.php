@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Dream Ce</b> || coffe & tea</a>
+    <a href="#"><b>Dream Cafe</b> || coffe & tea</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
