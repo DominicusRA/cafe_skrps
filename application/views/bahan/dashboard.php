@@ -240,7 +240,7 @@
               <div class="card-header">
                 <h3 class="card-title">Data Bahan</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-data-bahan">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
                     Tambah Data
                   </button>
