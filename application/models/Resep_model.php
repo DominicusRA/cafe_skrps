@@ -27,8 +27,8 @@
             return $data;
         }
         function delete_menu($data){
-            if($this->db->delete('menu', $data)){
-                if($this->db->delete('resep', $data)){
+            if($this->db->delete('resep', $data)){
+                if($this->db->delete('menu', $data)){
                     return true;
                 }else{
                     return false;

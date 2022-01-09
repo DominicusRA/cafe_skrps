@@ -346,6 +346,10 @@
                             <label for="bahan">Nama Menu</label>
                             <input type="text" name="menu" class="form-control form-control-sm">
                           </div>
+                          <div class="col-3">
+                            <label for="harga">Harga</label>
+                            <input type="text" name="harga" class="form-control form-control-sm">
+                          </div>
                         </div>
                       </div>
                     </div>

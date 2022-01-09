@@ -23,7 +23,8 @@ class Resep_controler extends CI_Controller {
 		if($this->login_model->cek_session()){
 			$data=array(
 				'nama' => $this->input->post('menu'),
-				'kode_menu' => $this->input->post('kode_menu')
+				'kode_menu' => $this->input->post('kode_menu'),
+				'harga' => $this->input->post('harga')
 			);
 			$select_bahan = $this->input->post("select_bahan");
 			$jumlah = $this->input->post("jumlah");
