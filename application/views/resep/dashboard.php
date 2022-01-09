@@ -254,6 +254,7 @@
                       <th>No</th>
                       <th>Kode Menu</th>
                       <th>Nama Menu</th>
+                      <th>Harga</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -268,6 +269,7 @@
                       <td><?=$nomor?></td>
                       <td><?=$data_menu['kode_menu']?></td>
                       <td><?=$data_menu['nama']?></td>
+                      <td><?=isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?></td>
                       <td>
                         <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
                           <button type="button" class="btn btn-danger" >
@@ -290,6 +292,7 @@
                     <th>No</th>
                     <th>Kode Menu</th>
                     <th>Nama Menu</th>
+                    <th></th>
                     <th></th>
                   </tr>
                   </tfoot>
