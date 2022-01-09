@@ -82,6 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- <input type="text" id="menuu" name="id_menu" value="<?=$data_menu['id_menu']?>"> -->
 
                             <?=$data_menu['nama']?>
+                            Rp<?=isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?>
                           </div>
                         </div>
                       </a>
@@ -138,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <?=$data_menu['nama']?>
                             </div>
                             <div class="float-right">
-                              Rp 11.000
+                              Rp <?=isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?>
                             </div>
                           </div>
                         </div>
