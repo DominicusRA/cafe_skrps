@@ -237,13 +237,18 @@
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
+            <?php
+              foreach($resep->result_array() as $data_resep){
+                $menu=$data_resep['nama'];
+              }
+            ?>
               <div class="card-header">
-                <h3 class="card-title">Data Resep</h3>
+                <h3 class="card-title">Detail Data Resep <?=$menu?></h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
+                  <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
                     Tambah Data
-                  </button>
+                  </button> -->
                 </div>
               </div>
               <!-- /.card-header -->
@@ -261,24 +266,24 @@
                     
                     <?php
                       $nomor=0;
-                      foreach($menu->result_array() as $data_menu):
+                      foreach($resep->result_array() as $data_resep):
                         $nomor++;
                     ?>
                     <tr>
                       <td><?=$nomor?></td>
-                      <td><?=$data_menu['kode_menu']?></td>
-                      <td><?=$data_menu['nama']?></td>
+                      <td><?=$data_resep['nama_bahan']?></td>
+                      <td><?=$data_resep['takaran']?></td>
                       <td>
-                        <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
+                        <!-- <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_resep['nama_bahan']?>">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
                           </button>
                         </a>
-                        <a href="<?php echo base_url() ?>index.php/resep_controler/see/<?=$data_menu['id_menu']?>">
+                        <a href="<?php echo base_url() ?>index.php/resep_controler/see/<?=$data_resep['id_menu']?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
                           </button>
-                        </a>
+                        </a> -->
                       </td>
                     </tr>
                     <?php

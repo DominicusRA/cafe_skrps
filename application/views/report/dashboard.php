@@ -307,8 +307,8 @@
                   <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>Kode Menu</th>
-                    <th>Nama Menu</th>
+                    <th>Kode Report</th>
+                    <th>Periode Penjualan</th>
                     <th></th>
                   </tr>
                   </tfoot>

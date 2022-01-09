@@ -16,6 +16,16 @@
         function get_menu(){
             return $this->db->query("SELECT * FROM menu");
         }
+        function get_resep($id_menu){
+
+            $this->db->select('menu.nama,bahan.nama_bahan,resep.takaran');
+            $this->db->from('resep');
+            $this->db->join('menu', 'menu.id_menu=resep.id_menu');
+            $this->db->join('bahan', 'bahan.id_bahan=resep.id_bahan');
+            $this->db->where('menu.id_menu',$id_menu);
+            $data=$this->db->get();
+            return $data;
+        }
         function delete_menu($data){
             if($this->db->delete('menu', $data)){
                 if($this->db->delete('resep', $data)){

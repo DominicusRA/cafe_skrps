@@ -59,4 +59,8 @@ class Resep_controler extends CI_Controller {
 			echo "gagal";
 		}
 	}
+	public function see($menu){
+		$data['resep']=$this->resep_model->get_resep($menu);
+		$this->load->view("resep/detail",$data);
+	}
 }
