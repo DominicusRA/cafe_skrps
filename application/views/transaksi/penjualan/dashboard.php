@@ -256,37 +256,37 @@
                     <tr>
                       <th>No</th>
                       <th>Periode Penjualan</th>
-                      <th>Jumlah Produk Terjual</th>
+                      <!-- <th>Jumlah Produk Terjual</th> -->
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     
                     <?php
-                      foreach($last_date->result_array() as $last_date){
-                        $last_date_format = new DateTime($last_date['tanggal']);
-                      }
+                      // foreach($tanggal_jual->result_array() as $tanggal_jual){
+                      //   $last_date_format = new DateTime($last_date['tanggal']);
+                      // }
                       $nomor=0;
-                      while(date('m-Y')>$last_date_format->format('m-Y')){
-                        // echo $last_date_format->format('M Y')."<br>";
-                        $last_date_format->modify('+ 1 month');
+                      // while(date('m-Y')>$last_date_format->format('m-Y')){
+                      //   // echo $last_date_format->format('M Y')."<br>";
+                      //   $last_date_format->modify('+ 1 month');
                       // }
                         
 
-                      // foreach($report->result_array() as $data_report):
+                      foreach($tanggal_jual->result_array() as $tanggal_jual):
                         $nomor++;
                     ?>
                     <tr>
                       <td><?=$nomor?></td>
-                      <td><?=$last_date_format->format('M Y')?></td>
-                      <td></td>
+                      <td><?=$tanggal_jual["tanggal"]?></td>
+                      <!-- <td></td> -->
                       <td>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
+                        <!-- <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
                           </button>
-                        </a>
-                        <a href="#">
+                        </a> -->
+                        <a href="<?php echo base_url() ?>index.php/transaksi_controler/detail_penjualan/<?=$tanggal_jual["tanggal"]?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
                           </button>
@@ -294,7 +294,8 @@
                       </td>
                     </tr >
                     <?php
-                      }
+                      endforeach;
+                      // }
                       // $nomor++;
                     ?>
                   </tbody>
@@ -302,7 +303,7 @@
                   <tr>
                     <th>No</th>
                     <th>Periode Penjualan</th>
-                    <th>Jumlah Produk Terjual</th>
+                    <!-- <th>Jumlah Produk Terjual</th> -->
                     <th></th>
                   </tr>
                   </tfoot>
