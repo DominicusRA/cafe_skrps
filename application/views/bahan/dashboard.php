@@ -172,12 +172,12 @@
                   <p>Penjualan</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url() ?>index.php/stokmasuk_controler" class="nav-link">
+              <!-- <li class="nav-item">
+                <a href="<?php echo base_url() ?>index.php/stok_masuk_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok Masuk</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
 

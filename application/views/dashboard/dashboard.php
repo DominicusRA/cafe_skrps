@@ -172,12 +172,12 @@
                   <p>Penjualan</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url() ?>index.php/stokmasuk_controler" class="nav-link">
+              <!-- <li class="nav-item">
+                <a href="<?php echo base_url() ?>index.php/stok_masuk_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok Masuk</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
 
@@ -236,17 +236,17 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
-            <div class="card">
+            <!-- <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Penjualan</h3>
-                  <!-- <a href="javascript:void(0);">View Report</a> -->
+                  <a href="javascript:void(0);">View Report</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">820</span>
+                    <span class="text-bold text-lg">0</span>
                     <span>Visitors Over Time</span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
@@ -256,7 +256,6 @@
                     <span class="text-muted">Since last week</span>
                   </p>
                 </div>
-                <!-- /.d-flex -->
 
                 <div class="position-relative mb-4">
                   <canvas id="visitors-chart" height="200"></canvas>
@@ -272,7 +271,7 @@
                   </span>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- /.card -->
             <!-- /.card -->
           </div>

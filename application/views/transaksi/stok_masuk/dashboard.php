@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Report || Admin</title>
+  <title>Penjualan || Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -157,8 +157,8 @@
           </li> -->
 
 
-          <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Transaksi
@@ -167,24 +167,24 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url() ?>index.php/transaksi_controler" class="nav-link">
+                <a href="<?php echo base_url() ?>index.php/transaksi_controler" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penjualan</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="<?php echo base_url() ?>index.php/stok_masuk_controler" class="nav-link">
+              <li class="nav-item">
+                <a href="<?php echo base_url() ?>index.php/stokmasuk_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok Masuk</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
 
 
 
           <li class="nav-item">
-            <a href="<?php echo base_url() ?>index.php/report_controler" class="nav-link active">
+            <a href="<?php echo base_url() ?>index.php/report_controler" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Report
@@ -238,7 +238,7 @@
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Report</h3>
+                <h3 class="card-title">Data Penjualan</h3>
                 <div class="card-tools">
                   <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
@@ -248,33 +248,45 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <?php
+                  // foreach
+                ?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Kode Report</th>
                       <th>Periode Penjualan</th>
+                      <!-- <th>Jumlah Produk Terjual</th> -->
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     
                     <?php
+                      // foreach($tanggal_jual->result_array() as $tanggal_jual){
+                      //   $last_date_format = new DateTime($last_date['tanggal']);
+                      // }
                       $nomor=0;
-                      foreach($report->result_array() as $data_report):
+                      // while(date('m-Y')>$last_date_format->format('m-Y')){
+                      //   // echo $last_date_format->format('M Y')."<br>";
+                      //   $last_date_format->modify('+ 1 month');
+                      // }
+                        
+
+                      foreach($tanggal_jual->result_array() as $tanggal_jual):
                         $nomor++;
                     ?>
                     <tr>
                       <td><?=$nomor?></td>
-                      <td><?=$data_report['kode_report']?></td>
-                      <td><?=$data_report['periode']?></td>
+                      <td><?=$tanggal_jual["tanggal"]?></td>
+                      <!-- <td></td> -->
                       <td>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
+                        <!-- <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
                           </button>
-                        </a>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/see_report/<?=$data_report['id_report']?>">
+                        </a> -->
+                        <a href="<?php echo base_url() ?>index.php/transaksi_controler/detail_penjualan/<?=$tanggal_jual["tanggal"]?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
                           </button>
@@ -283,32 +295,15 @@
                     </tr >
                     <?php
                       endforeach;
-                      $nomor++;
-                      if($new_report!=null){
-
-                      
-                    ?>
-                    <tr class="table-info">
-                      <td><?=$nomor?></td>
-                      <td><?=$new_report['kode_report']?></td>
-                      <td><?=$new_report['date']?></td>
-                      <td>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/create_report/">
-                          <button type="button" class="btn btn-info" >
-                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                          </button>
-                        </a>
-                      </td>
-                    </tr>
-                    <?php
-                      }  
+                      // }
+                      // $nomor++;
                     ?>
                   </tbody>
                   <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>Kode Report</th>
                     <th>Periode Penjualan</th>
+                    <!-- <th>Jumlah Produk Terjual</th> -->
                     <th></th>
                   </tr>
                   </tfoot>

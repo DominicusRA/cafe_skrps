@@ -41,8 +41,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </button>
 
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        
       </div>
+      
+      
     </div>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="notifications-menu">
+          <a href="<?php echo base_url() ?>index.php/login_controler/log_out">
+            <i class="fa fa-power-off"></i>
+            Log Out
+          </a>
+        </li>
+        
+        <li>
+          <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+        </li>
+      </ul>
+      </div>
   </nav>
   <!-- /.navbar -->
 
