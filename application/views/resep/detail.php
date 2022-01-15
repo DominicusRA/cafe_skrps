@@ -117,7 +117,7 @@
               <li class="nav-item">
                 <a href="<?php echo base_url() ?>index.php/resep_controler" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Resep</p>
+                  <p>Resep / Menu</p>
                 </a>
               </li>
               <li class="nav-item">
