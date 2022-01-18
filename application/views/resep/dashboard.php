@@ -271,16 +271,22 @@
                       <td><?=$data_menu['nama']?></td>
                       <td><?=isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?></td>
                       <td>
-                        <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
+                        <!-- <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
                           </button>
-                        </a>
+                        </a> -->
                         <a href="<?php echo base_url() ?>index.php/resep_controler/see/<?=$data_menu['id_menu']?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
                           </button>
                         </a>
+                        <!-- <a href="<?php echo base_url() ?>index.php/resep_controler/edit/<?=$data_menu['id_menu']?>"> -->
+                          <!-- <button type="button" class="btn btn-info" > -->
+                            <!-- <i class="fa fa-pencil"></i> -->
+                            <!-- <i class="fas fa-pencil"></i> -->
+                          <!-- </button> -->
+                        <!-- </a> -->
                       </td>
                     </tr>
                     <?php

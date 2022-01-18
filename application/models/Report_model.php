@@ -279,23 +279,26 @@
             foreach($tanggal_nota->result_array() as $data_tanggal){
                 // $tanggal_cek.=$data_tanggal['tanggal'];
                 $datetime_report_maker = new DateTime($data_tanggal['tanggal']);
-                $datetime_report_maker->modify('+9 month');
+                // echo "ini yang di periksa ".$datetime_report_maker."<br>";
+                $datetime_report_maker->modify('+5 month');
                 $tanggal_cek= $datetime_report_maker->format('Y-m-d');
             }
 
-            echo $tanggal_cek;
+            echo "ini tanggal yang di cek ".$tanggal_cek."<br>";
+            echo "ini tanggal transaksi pertama ".$data_tanggal['tanggal'];
 
             // for($cek_bulan=0;)
             $datetime_tanggal_cek = new DateTime($tanggal_cek);
             // $cek_bulan=0;
-            while(date('m-Y')>$datetime_tanggal_cek->format('m-Y')){
+            while(date('m-Y')<$datetime_tanggal_cek->format('m-Y')){
                 echo "masuk <br>";
                 echo date('m-Y')." >= ";
                 echo $datetime_tanggal_cek->format('m-Y');
                 // $cek_bulan++;
                 $datetime_tanggal_cek->modify('+ 1 month');
                 ///////////////////////////////////////////////////////////////////////////////////////
-                $x=array(-4,-3,-2,-1,0,1,2,3,4);
+                // $x=array(-4,-3,-2,-1,0,1,2,3,4);
+                $x=array(-5,-3,-1,1,3,5);
                 $x2=array();
                 $y=array();
     
@@ -325,7 +328,7 @@
                     $data_jual=array();
                     $test_bulan=12;
                     // echo "<br>";
-                    for($bulan=9;$bulan>=1;$bulan--){
+                    for($bulan=6;$bulan>=1;$bulan--){
                         $datetime_report = new DateTime($datetime_tanggal_cek->format('Y-m-d'));
                         // echo $bulan."<br>";
                         // foreach($menu->result_array() as $data_menu){
@@ -376,7 +379,7 @@
                 foreach($menu->result_array() as $data_menu){
                     $data_xy=array();
                     $t_y=0;
-                    for($i=0;$i<9;$i++){
+                    for($i=0;$i<6;$i++){
                         array_push($data_xy,$y[$data_menu['id_menu']][$i]*$x[$i]);
                         $t_y+=$y[$data_menu['id_menu']][$i];
                         
@@ -387,7 +390,7 @@
                     $total_xy+=array($data_menu['id_menu']=>array_sum($xy[$data_menu['id_menu']]));
                     $a+=array($data_menu['id_menu']=>$total_y[$data_menu['id_menu']]/count($x));
                     $b+=array($data_menu['id_menu']=>$total_xy[$data_menu['id_menu']]/array_sum($x2));
-                    $hasil+=array($data_menu['id_menu']=>$a[$data_menu['id_menu']]+$b[$data_menu['id_menu']]*5);
+                    $hasil+=array($data_menu['id_menu']=>$a[$data_menu['id_menu']]+$b[$data_menu['id_menu']]*7);
                     // array_push($hasil,$a[$data_menu['id_menu']]+$b[$data_menu['id_menu']]*5);
                     // $hasil=$aa+$bb*5;
     
@@ -426,6 +429,7 @@
                     'kode_report'=> "RPT/".$datetime_tanggal_cek->format('m')."/".$datetime_tanggal_cek->format('Y')
                 );
                 print_r($data_header_report);
+                // echo "masuk sini?";
     
                 // $this->db->select('*');
                 $this->db->select('kode_report');
