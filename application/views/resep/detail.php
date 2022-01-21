@@ -234,16 +234,27 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <?php
+          foreach($resep->result_array() as $data_resep){
+            $menu=$data_resep['nama'];
+            $kode_menu=$data_resep['kode_menu'];
+          }
+        ?>
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="<?php echo base_url() ?>index.php/resep_controler">Resep & Menu</a></li>
+              <li class="breadcrumb-item active"><?=$menu?></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
-            <?php
-              foreach($resep->result_array() as $data_resep){
-                $menu=$data_resep['nama'];
-              }
-            ?>
               <div class="card-header">
-                <h3 class="card-title">Detail Data Resep <?=$menu?></h3>
+                
+                <h3 class="card-title">Tabel Detail Resep</h3>
                 <div class="card-tools">
                   <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
@@ -253,13 +264,55 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <!-- informasi detail -->
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-2">
+                            Kode Menu
+                          </div>
+                          <div class="col-lg-1">
+                            :
+                          </div>
+                          <div class="col=lg-1">
+                            <?=$data_resep['kode_menu']?>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-2">
+                            Nama Menu
+                          </div>
+                          <div class="col-lg-1">
+                            :
+                          </div>
+                          <div class="col=lg-1">
+                            <?=$data_resep['nama']?>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-2">
+                            Harga
+                          </div>
+                          <div class="col-lg-1">
+                            :
+                          </div>
+                          <div class="col=lg-1">
+                            Rp <?=number_format($data_resep['harga'])?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Kode Menu</th>
                       <th>Nama Menu</th>
-                      <th></th>
+                      <th>Takaran</th>
+                      <th>Satuan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -273,31 +326,12 @@
                       <td><?=$nomor?></td>
                       <td><?=$data_resep['nama_bahan']?></td>
                       <td><?=$data_resep['takaran']?></td>
-                      <td>
-                        <!-- <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_resep['nama_bahan']?>">
-                          <button type="button" class="btn btn-danger" >
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </a>
-                        <a href="<?php echo base_url() ?>index.php/resep_controler/see/<?=$data_resep['id_menu']?>">
-                          <button type="button" class="btn btn-info" >
-                            <i class="fa fa-eye"></i>
-                          </button>
-                        </a> -->
-                      </td>
+                      <td><?=$data_resep['satuan']?></td>
                     </tr>
                     <?php
                       endforeach  
                     ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Kode Menu</th>
-                    <th>Nama Menu</th>
-                    <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

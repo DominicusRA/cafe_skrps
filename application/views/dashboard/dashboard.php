@@ -236,42 +236,60 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
-            <!-- <div class="card">
+            <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Penjualan</h3>
-                  <a href="javascript:void(0);">View Report</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">0</span>
-                    <span>Visitors Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
+                  
                 </div>
 
                 <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
+                  <canvas id="barChart" height="200"></canvas>
+
                 </div>
 
                 <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
+                  <!-- <span class="mr-2">
                     <i class="fas fa-square text-primary"></i> This Week
-                  </span>
+                  </span> -->
 
-                  <span>
+                  <!-- <span>
                     <i class="fas fa-square text-gray"></i> Last Week
-                  </span>
+                  </span> -->
                 </div>
               </div>
-            </div> -->
+            </div>
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Penjualan Item</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  
+                </div>
+
+                <div class="position-relative mb-4">
+                  <canvas id="donutChart" height="200"></canvas>
+
+                </div>
+                
+                <div class="d-flex flex-row justify-content-end">
+                  <!-- <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> This Week
+                  </span> -->
+
+                  <!-- <span>
+                    <i class="fas fa-square text-gray"></i> Last Week
+                  </span> -->
+                </div>
+              </div>
+            </div>
             <!-- /.card -->
             <!-- /.card -->
           </div>
@@ -291,13 +309,13 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-
+  
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -307,6 +325,17 @@
     </div> -->
   </footer>
 </div>
+
+<?php
+  $data_menu=array();
+  foreach($menu->result_array() as $menu){
+    array_push($data_menu,$menu['nama']);
+  }
+  echo "<pre>";
+  print_r($data_menu);
+  // echo $menu['nama'];
+  echo "</pre>";
+  ?>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -324,5 +353,98 @@
 <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url() ?>assets/dist/js/pages/dashboard3.js"></script>
+
+<script>
+  // console.log("cek");
+  // console.log("<?='asdasd'?>")  
+  // console.log(<?= json_encode($data_menu)?>)
+
+  
+  $(function(){
+    var areaChartData = {
+      labels  : ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli','Agustus','September','Oktober','November','Desember'],
+      datasets: [
+        {
+          label               : 'Digital Goods',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 40, 19, 86, 27, 90]
+        },
+        {
+          label               : 'Electronics',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [65, 59, 80, 81, 56, 55, 40]
+        },
+      ]
+    }
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartData = $.extend(true, {}, areaChartData)
+    var temp0 = areaChartData.datasets[0]
+    var temp1 = areaChartData.datasets[1]
+    barChartData.datasets[0] = temp1
+    barChartData.datasets[1] = temp0
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false
+    }
+
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: barChartData,
+      options: barChartOptions
+    })
+    //-------------
+    //- DONUT CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    
+    
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels : <?= json_encode($data_menu)?>,
+      // labels: [
+      //     'Chrome',
+      //     'IE',
+      //     'FireFox',
+      //     'Safari',
+      //     'Opera',
+      //     'Navigator',
+      // ],
+      datasets: [
+        {
+          data: [700,500,400,600,300,100,700,500,400,600,300,100700,500,400],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions
+    })
+  })
+</script>
 </body>
 </html>

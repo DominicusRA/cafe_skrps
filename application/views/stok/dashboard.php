@@ -234,11 +234,18 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item active">Stok</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Stok Bahan</h3>
+                <h3 class="card-title">Tabel Stok Bahan</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>

@@ -234,11 +234,19 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item active">Resep & Menu</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Resep</h3>
+                
+                <h3 class="card-title">Tabel Resep</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
@@ -269,7 +277,7 @@
                       <td><?=$nomor?></td>
                       <td><?=$data_menu['kode_menu']?></td>
                       <td><?=$data_menu['nama']?></td>
-                      <td><?=isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?></td>
+                      <td>Rp <?=number_format(isset($data_menu['harga']) ? $data_menu['harga'] : '0') ?></td>
                       <td>
                         <!-- <a href="<?php echo base_url() ?>index.php/resep_controler/delete/<?=$data_menu['id_menu']?>">
                           <button type="button" class="btn btn-danger" >
@@ -279,29 +287,22 @@
                         <a href="<?php echo base_url() ?>index.php/resep_controler/see/<?=$data_menu['id_menu']?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
+                            Detail
                           </button>
                         </a>
-                        <!-- <a href="<?php echo base_url() ?>index.php/resep_controler/edit/<?=$data_menu['id_menu']?>"> -->
-                          <!-- <button type="button" class="btn btn-info" > -->
-                            <!-- <i class="fa fa-pencil"></i> -->
-                            <!-- <i class="fas fa-pencil"></i> -->
-                          <!-- </button> -->
-                        <!-- </a> -->
+                        <a href="<?php echo base_url() ?>index.php/resep_controler/edit/<?=$data_menu['id_menu']?>">
+                          <button type="button" class="btn btn-success" >
+                            <i class="fas fa-pencil-alt"></i>
+                            Edit
+                          </button>
+                        </a>
+                        
                       </td>
                     </tr>
                     <?php
                       endforeach  
                     ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Kode Menu</th>
-                    <th>Nama Menu</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

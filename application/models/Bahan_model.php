@@ -6,7 +6,13 @@
             };
         }
         function get_bahan(){
-            return $this->db->query("SELECT * FROM bahan");
+            // return $this->db->query("SELECT * FROM bahan");
+
+            $this->db->select('bahan.kode_bahan,bahan.nama_bahan,satuan.satuan');
+            $this->db->from('bahan');
+            $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
+            $data=$this->db->get();
+            return $data;
         }
         function get_code(){
             return $this->db->query("SELECT kode_bahan FROM bahan ORDER BY kode_bahan DESC LIMIT 1");

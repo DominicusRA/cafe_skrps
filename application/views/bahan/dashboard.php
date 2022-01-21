@@ -234,11 +234,18 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item active">Bahan</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Bahan</h3>
+                <h3 class="card-title">Tabel Bahan</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
@@ -270,17 +277,17 @@
                     <td><?=$nomor?></td>
                     <td><?=$data_bahan['kode_bahan']?></td>
                     <td><?=$data_bahan['nama_bahan']?></td>
-                    <td>-</td>
+                    <td><?=$data_bahan['satuan']?></td>
                     <td>
                       <!-- jika ada stok, button delete tidak muncul -->
-                      <a href="<?php echo base_url() ?>index.php/bahan_controler/delete/<?=$data_bahan['id_bahan']?>">
+                      <!-- <a href="<?php echo base_url() ?>index.php/bahan_controler/delete/<?=$data_bahan['id_bahan']?>">
                         <button type="button" class="btn btn-danger" >
                           <i class="fa fa-trash"></i>
                         </button>
                       </a>
                       <button type="button" class="btn btn-primary">
                         <i class="fa fa-eye"></i>
-                      </button>
+                      </button> -->
                     </td>
                   </tr>
 
@@ -289,15 +296,6 @@
                   ?>
                   
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Kode Bahan</th>
-                    <th>Nama Bahan</th>
-                    <th>Satuan</th>
-                    <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
