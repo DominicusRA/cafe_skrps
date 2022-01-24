@@ -299,7 +299,9 @@
                             :
                           </div>
                           <div class="col=lg-1">
-                            Rp <?=number_format($data_resep['harga'])?>
+                            Rp <?php if($data_resep['harga']>0)
+                                {echo number_format($data_resep['harga']);}
+                                else{echo '0';}?>
                           </div>
                         </div>
                       </div>
