@@ -280,7 +280,7 @@
                       <td>
                         <!-- jika ada stok, button delete tidak muncul -->
                         <button type="button" class="btn btn-primary">
-                          <i class="fa fa-eye"></i>
+                          <i class="fa fa-eye"></i> Detail
                         </button>
                       </td>
                     </tr>
@@ -289,15 +289,6 @@
                     endforeach  
                   ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Kode bahan</th>
-                    <th>Bahan</th>
-                    <th>Stok</th>
-                    <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

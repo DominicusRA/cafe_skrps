@@ -234,6 +234,13 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item active">Penjualan</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
@@ -279,16 +286,10 @@
                     <tr>
                       <td><?=$nomor?></td>
                       <td><?=$tanggal_jual["tanggal"]?></td>
-                      <!-- <td></td> -->
                       <td>
-                        <!-- <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
-                          <button type="button" class="btn btn-danger" >
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </a> -->
                         <a href="<?php echo base_url() ?>index.php/transaksi_controler/detail_penjualan/<?=$tanggal_jual["tanggal"]?>">
                           <button type="button" class="btn btn-info" >
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-eye"></i> Detail
                           </button>
                         </a>
                       </td>
@@ -299,14 +300,6 @@
                       // $nomor++;
                     ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Periode Penjualan</th>
-                    <!-- <th>Jumlah Produk Terjual</th> -->
-                    <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

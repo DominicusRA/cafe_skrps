@@ -234,6 +234,15 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <!-- <li class="breadcrumb-item active">Penjualan</li> -->
+              <li class="breadcrumb-item"><a href="<?php echo base_url() ?>index.php/report_controler">Report</a></li>
+              <li class="breadcrumb-item active">Detail</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
@@ -256,6 +265,7 @@
                       <th>Stok Aktual</th>
                       <th>Jumlah Akan Terpakai</th>
                       <th>Saran Stok</th >
+                      <th>Satuan</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -296,11 +306,11 @@
                         ?>
                       </td>
                       <td>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
+                        <!-- <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
                           <button type="button" class="btn btn-danger" >
                             <i class="fa fa-trash"></i>
                           </button>
-                        </a>
+                        </a> -->
                         <!-- <a href="<?php echo base_url() ?>index.php/report_controler/see_report/<?=$data_report['id_report']?>">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-eye"></i>
@@ -318,16 +328,6 @@
                     
                     
                   </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>No</th>
-                      <th>Kode Report</th>
-                      <th>Stok Aktual</th>
-                      <th>Jumlah Akan Terpakai</th>
-                      <th>Saran Stok</th >
-                      <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

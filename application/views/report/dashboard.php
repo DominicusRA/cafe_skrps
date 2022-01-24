@@ -234,6 +234,14 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-left">
+              <!-- <li class="breadcrumb-item active">Penjualan</li> -->
+              <li class="breadcrumb-item active">Report</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
@@ -269,14 +277,9 @@
                       <td><?=$data_report['kode_report']?></td>
                       <td><?=$data_report['periode']?></td>
                       <td>
-                        <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
-                          <button type="button" class="btn btn-danger" >
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </a>
                         <a href="<?php echo base_url() ?>index.php/report_controler/see_report/<?=$data_report['id_report']?>">
                           <button type="button" class="btn btn-info" >
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-eye"></i> Detail
                           </button>
                         </a>
                       </td>
