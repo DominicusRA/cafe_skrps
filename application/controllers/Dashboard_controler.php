@@ -12,7 +12,8 @@ class Dashboard_controler extends CI_Controller {
 	{
 		if($this->login_model->cek_session()){
 
-            $data['menu']=$this->dashboard_model->get_menu();
+            $data['penjualan_menu']=$this->dashboard_model->get_penjualan_menu();
+			$data['penjualan_bulan']=$this->dashboard_model->get_penjualan_bulan();
 			// $data['penjualan']=$this->dashboard_model->get_penjualan();
 			$this->load->view('dashboard/dashboard',$data);
 

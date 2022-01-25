@@ -275,7 +275,7 @@
                 </div>
 
                 <div class="position-relative mb-4">
-                  <canvas id="donutChart" height="200"></canvas>
+                  <canvas id="chartmenu" height="500"></canvas>
 
                 </div>
                 
@@ -327,15 +327,21 @@
 </div>
 
 <?php
-  $data_menu=array();
-  foreach($menu->result_array() as $menu){
-    array_push($data_menu,$menu['nama']);
+  $data_penjualan_menu['nama']=array();
+  $data_penjualan_menu['jumlah']=array();
+  $data_penjualan_bulan=array();
+  foreach($penjualan_menu->result_array() as $penjualan_menu){
+    array_push($data_penjualan_menu['nama'],$penjualan_menu['nama']);
+    array_push($data_penjualan_menu['jumlah'],$penjualan_menu['jumlah']);
   }
-  echo "<pre>";
-  print_r($data_menu);
-  // echo $menu['nama'];
-  echo "</pre>";
-  ?>
+  foreach($penjualan_bulan->result_array() as $penjualan_bulan){
+    array_push($data_penjualan_bulan,$penjualan_bulan['jumlah']);
+  }
+  // echo "<pre>";
+  // print_r($data_penjualan);
+  // // echo $menu['nama'];
+  // echo "</pre>";
+?>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -357,7 +363,9 @@
 <script>
   // console.log("cek");
   // console.log("<?='asdasd'?>")  
-  // console.log(<?= json_encode($data_menu)?>)
+  console.log(<?= json_encode($data_penjualan_bulan)?>)
+  console.log(<?= json_encode($data_penjualan_menu['nama'])?>)
+  console.log(<?= json_encode($data_penjualan_menu['jumlah'])?>)
 
   
   $(function(){
@@ -365,7 +373,7 @@
       labels  : ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli','Agustus','September','Oktober','November','Desember'],
       datasets: [
         {
-          label               : 'Digital Goods',
+          label               : 'Penjualan',
           backgroundColor     : 'rgba(60,141,188,0.9)',
           borderColor         : 'rgba(60,141,188,0.8)',
           pointRadius          : false,
@@ -373,19 +381,25 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
-        },
+          data                : <?= json_encode($data_penjualan_bulan)?>
+        }
+      ]
+    }
+    var menu_chart_data = {
+      labels  : <?= json_encode($data_penjualan_menu['nama'])?>,
+      datasets: [
         {
-          label               : 'Electronics',
-          backgroundColor     : 'rgba(210, 214, 222, 1)',
-          borderColor         : 'rgba(210, 214, 222, 1)',
+          label               : 'Penjualan Menu',
+          // backgroundColor     : 'rgba(60,141,188,0.9)',
+          backgroundColor     : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          borderColor         : 'rgba(60,141,188,0.8)',
           pointRadius         : false,
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
-        },
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : <?= json_encode($data_penjualan_menu['jumlah'])?>
+        }
       ]
     }
     //-------------
@@ -393,10 +407,8 @@
     //-------------
     var barChartCanvas = $('#barChart').get(0).getContext('2d')
     var barChartData = $.extend(true, {}, areaChartData)
-    var temp0 = areaChartData.datasets[0]
-    var temp1 = areaChartData.datasets[1]
-    barChartData.datasets[0] = temp1
-    barChartData.datasets[1] = temp0
+    var temp= areaChartData.datasets
+    barChartData.datasets = temp
 
     var barChartOptions = {
       responsive              : true,
@@ -410,40 +422,25 @@
       options: barChartOptions
     })
     //-------------
-    //- DONUT CHART -
+    //- BAR CHART CHART MENU -
     //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    
-    
-    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-    var donutData        = {
-      labels : <?= json_encode($data_menu)?>,
-      // labels: [
-      //     'Chrome',
-      //     'IE',
-      //     'FireFox',
-      //     'Safari',
-      //     'Opera',
-      //     'Navigator',
-      // ],
-      datasets: [
-        {
-          data: [700,500,400,600,300,100,700,500,400,600,300,100700,500,400],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-        }
-      ]
+    var barChartCanvas = $('#chartmenu').get(0).getContext('2d')
+    var barChartMenuData = $.extend(true, {}, menu_chart_data)
+    var temp= menu_chart_data.datasets
+    barChartMenuData.datasets = temp
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false
     }
-    var donutOptions     = {
-      maintainAspectRatio : false,
-      responsive : true,
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    new Chart(donutChartCanvas, {
-      type: 'doughnut',
-      data: donutData,
-      options: donutOptions
+
+    new Chart(barChartCanvas, {
+      type: 'horizontalBar',
+      data: barChartMenuData,
+      options: barChartOptions
     })
+    
   })
 </script>
 </body>
