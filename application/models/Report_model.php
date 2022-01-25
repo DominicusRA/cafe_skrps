@@ -29,6 +29,7 @@
         function get_data_bahan(){
             $this->db->select('*');
             $this->db->from('bahan');
+            $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
             return $this->db->get();
 
         }
@@ -44,10 +45,12 @@
             $this->db->select('*');
             $this->db->from('stok');
             $this->db->join('bahan','bahan.id_bahan=stok.id_bahan');
+            $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
             $data['data_stok']=$this->db->get();
 
             $this->db->select('*');
             $this->db->from('bahan');
+            $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
             $data_bahan=$this->db->get();
             $data['data_bahan']=$data_bahan;
             foreach($data_bahan->result_array() as $data_bahan){

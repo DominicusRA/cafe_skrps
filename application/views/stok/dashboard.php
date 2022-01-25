@@ -262,6 +262,8 @@
                     <th>Kode bahan</th>
                     <th>Bahan</th>
                     <th>Stok</th>
+                    <th>Satuan</th>
+                    <th>keterangan</th>
                     <th></th>
                   </tr>
                   </thead>
@@ -270,13 +272,19 @@
                     $nomor=0;
                     foreach($bahan->result_array() as $data_bahan):
                       $nomor++;
+                      if($data_bahan['jumlah']<=$data_bahan['limit']){
+                        $color_bg='table-danger';
+                        $keterangan='Persediaan Habis';
+                      }
                   ?>
 
-                    <tr>
+                    <tr class="<?=$color_bg?>">
                       <td><?=$nomor?></td>
                       <td><?=$data_bahan['kode_bahan']?></td>
                       <td><?=$data_bahan['nama_bahan']?></td>
                       <td><?=$data_bahan['jumlah']?></td>
+                      <td><?=$data_bahan['satuan']?></td>
+                      <td><?=$keterangan?></td>
                       <td>
                         <!-- jika ada stok, button delete tidak muncul -->
                         <button type="button" class="btn btn-primary">

@@ -305,6 +305,7 @@
                           }
                         ?>
                       </td>
+                      <td><?=$data_bahan['satuan']?></td>
                       <td>
                         <!-- <a href="<?php echo base_url() ?>index.php/report_controler/delete/">
                           <button type="button" class="btn btn-danger" >

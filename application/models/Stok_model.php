@@ -6,6 +6,7 @@
             $this->db->select('*');
             $this->db->from('bahan');
             $this->db->join('stok', 'stok.id_bahan=bahan.id_bahan');
+            $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
             
             return $this->db->get();
         }
