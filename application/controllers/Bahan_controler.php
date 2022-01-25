@@ -14,6 +14,7 @@ class Bahan_controler extends CI_Controller {
 
             $data['bahan']=$this->bahan_model->get_bahan();
 			$data['last_code']=$this->bahan_model->get_code();
+			$data['satuan']=$this->bahan_model->get_satuan();
             $this->load->view("bahan/dashboard",$data);
 
         }else{
@@ -25,9 +26,11 @@ class Bahan_controler extends CI_Controller {
 		if($this->login_model->cek_session()){
 			$data=array(
 				'nama_bahan' => $this->input->post('bahan'),
-				'kode_bahan' => $this->input->post('kode_bahan')
+				'kode_bahan' => $this->input->post('kode_bahan'),
+				'id_satuan' => $this->input->post('satuan')
 			);
-			$status=$this->bahan_model->add($data);
+			echo $this->input->post('satuan');
+			$status=$this->bahan_model->add($data,$this->input->post('minimum_stok'));
 			if($status){
 				redirect('bahan_controler');
 			}else{

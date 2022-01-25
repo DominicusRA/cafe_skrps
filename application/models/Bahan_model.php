@@ -1,9 +1,27 @@
 <?php
     class Bahan_model extends CI_MODEL{
-        function add($data){
+        function add($data,$limit){
             if($this->db->insert('bahan',$data)){
-            return TRUE;
+                $id_bahan = $this->db->insert_id();
+
+                $data_stok=array(
+                    'id_bahan' => $id_bahan,
+                    'jumlah' => 0,
+                    'limit' => $limit
+                );
+                if($this->db->insert('stok',$data_stok)){
+                    return TRUE;
+
+                }else{
+                    return FALSE;
+                }
             };
+        }
+        function get_satuan(){
+            $this->db->select('*');
+            $this->db->from('satuan');
+            $data=$this->db->get();
+            return $data;
         }
         function get_bahan(){
             // return $this->db->query("SELECT * FROM bahan");
@@ -11,6 +29,7 @@
             $this->db->select('bahan.kode_bahan,bahan.nama_bahan,satuan.satuan');
             $this->db->from('bahan');
             $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
+            $this->db->order_by('bahan.kode_bahan','ASC');
             $data=$this->db->get();
             return $data;
         }

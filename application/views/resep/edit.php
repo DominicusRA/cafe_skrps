@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stok || Admin</title>
+  <title>Resep || Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -105,8 +105,8 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link ">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Master
@@ -115,7 +115,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url() ?>index.php/resep_controler" class="nav-link">
+                <a href="<?php echo base_url() ?>index.php/resep_controler" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Resep / Menu</p>
                 </a>
@@ -139,7 +139,7 @@
           </li> -->
           
           <li class="nav-item">
-            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link active">
+            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link">
               <i class="nav-icon fas fa-archive"></i>
               <p>
                 Stok
@@ -234,71 +234,114 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <?php
+          foreach($resep->result_array() as $data_resep){
+            $menu=$data_resep['nama'];
+            $kode_menu=$data_resep['kode_menu'];
+          }
+        ?>
         <div class="row mb-2">
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item active">Stok</li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url() ?>index.php/resep_controler">Resep & Menu</a></li>
+              <li class="breadcrumb-item active">Edit</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
+        
         <div class="row">
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tabel Stok Bahan</h3>
+                
+                <h3 class="card-title">Tabel Detail Resep</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
-                    <i class="fa fa-plus"></i>
-                    Stok Masuk
-                  </button>
+                 
                 </div>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
+                <form id="form_resep" action="<?php echo base_url() ?>index.php/resep_controler/edit_data" method="post">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <div class="card-tools">
+                            <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
+                                <i class="fa fa-save"></i>
+                                Simpan Perubahan
+                              </button>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                        <input type="text" name="id_menu" class="form-control form-control-sm" value="<?=$data_resep['id_menu']?>" hidden>
+                          <div class="row">
+                            <div class="col-lg-2">
+                              Kode Menu
+                            </div>
+                            <div class="col-lg-1">
+                              :
+                            </div>
+                            <div class="col=lg-1">
+                              <?=$data_resep['kode_menu']?>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2">
+                              Nama Menu
+                            </div>
+                            <div class="col-lg-1">
+                              :
+                            </div>
+                            <div class="col=lg-1">
+                              <?=$data_resep['nama']?>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2">
+                              Harga
+                            </div>
+                            <div class="col-lg-1">
+                              :
+                            </div>
+                            <div class="col=lg-2">
+                              Rp
+                            </div>
+                            <div class="col-lg-1">
+                              <input type="number" name="harga" min="0" class="form-control form-control-sm" value="<?php if($data_resep['harga']>0)
+                                  {echo number_format($data_resep['harga'],0,",",".");}
+                                  else{echo '0';}?>">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Kode bahan</th>
-                    <th>Bahan</th>
-                    <th>Stok</th>
-                    <th>Satuan</th>
-                    <th>keterangan</th>
-                    <th></th>
-                  </tr>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Menu</th>
+                      <th>Takaran</th>
+                      <th>Satuan</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <?php
-                    $nomor=0;
-                    foreach($bahan->result_array() as $data_bahan):
-                      $nomor++;
-                      if($data_bahan['jumlah']<=$data_bahan['limit']){
-                        $color_bg='table-danger';
-                        $keterangan='<b>Persediaan habis';
-                      }else{
-                        $color_bg='table-default';
-                        $keterangan='-';
-                      }
-                  ?>
-
-                    <tr class="<?=$color_bg?>">
+                    
+                    <?php
+                      $nomor=0;
+                      foreach($resep->result_array() as $data_resep):
+                        $nomor++;
+                    ?>
+                    <tr>
                       <td><?=$nomor?></td>
-                      <td><?=$data_bahan['kode_bahan']?></td>
-                      <td><?=$data_bahan['nama_bahan']?></td>
-                      <td><?=$data_bahan['jumlah']?></td>
-                      <td><?=$data_bahan['satuan']?></td>
-                      <td><?=$keterangan?></td>
-                      <td>
-                        <!-- jika ada stok, button delete tidak muncul -->
-                        <button type="button" class="btn btn-primary">
-                          <i class="fa fa-eye"></i> Detail
-                        </button>
-                      </td>
+                      <td><?=$data_resep['nama_bahan']?></td>
+                      <td><?=$data_resep['takaran']?></td>
+                      <td><?=$data_resep['satuan']?></td>
                     </tr>
-
-                  <?php
-                    endforeach  
-                  ?>
+                    <?php
+                      endforeach  
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -308,106 +351,7 @@
         </div>
         <!-- /.row -->
       </div>
-      <div class="modal fade" id="modal-data-bahan">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Masukan Data Stok</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form action="<?php echo base_url() ?>index.php/stok_controler/add_stok" method="post">
-              <div class="modal-body">
-                
-                <div class="row">
-                  <div class="container">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="row">
-                          
-                          <div class="col-3">
-                            <label for="bahan">Tanggal Stok Masuk</label>
-                            <input type="date" class="form-control datetimepicker-input" id="tanggal" name="tanggal" >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="container">
-                    <div class="card">
-                      <div class="card-header">
-                        Detail Barang Masuk
-                      </div>
-                      <div class="card-body">
-                        <table class="table table-borderless" id="stok" >
-                          <tr>
-                            <td>
-                              <label for="bahan">Nama Bahan</label>
-                            </td>
-                            <td>
-                              <label for="bahan">Jumlah</label>
-                            </td>
-                            <td>
-                              <label for="bahan">Satuan</label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td id="bahan_col">
-                              
-                              <select name="select_bahan[]" id="select_bahan[]" class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>
-                                <?php
-                                  foreach($bahan->result_array() as $data_bahan):
-                                ?>
-                                <option value="<?=$data_bahan['id_bahan']?>"><?=$data_bahan['nama_bahan']?></option>
-                                <?php
-                                  endforeach
-                                ?>
-                              </select>
-                            </td>
-                            <td id="jumlah_col">
-                              <input type="number" min="1" id="jumlah[]" name="jumlah[]" value=""class="form-control form-control-sm" >
-                            </td>
-                            <td>
-                              <div class="satuan">Gr</div>
-                            </td>
-                          </tr>
-                          
-                        </table>
-                        <div class="row">
-                          <div class="col-sm">
-                            <div class="container">
-                              <!-- button -->
-                              <button id="add" type="button" class="btn btn-primary" ><i class="fa fa-plus"></i></button>
-
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-
-
-
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" >Save</button>
-              </div>
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
+      
       <!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -459,8 +403,11 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- new add on custom js -->
-<script src="<?php echo base_url() ?>assets/dist/js/stok/stok.js"></script>
+
+<script src="<?php echo base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- new add on custon ja -->
+<script src="<?php echo base_url() ?>assets/dist/js/resep/resep.js"></script>
+<!-- C:\xampp\htdocs\cafe_skrps\application\views\resep -->
 
 <script>
   $(function () {
@@ -473,9 +420,7 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     
   });
-  $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
+  
 </script>
 </body>
 </html>

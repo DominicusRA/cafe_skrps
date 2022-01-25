@@ -18,6 +18,16 @@ class Resep_controler extends CI_Controller {
             $this->load->view('login/login');
         }
 	}
+	public function edit_data(){
+		// echo $this->input->post('harga')."<br>";
+		// echo $this->input->post('id_menu');
+		$data=array(
+			'harga' => $this->input->post('harga')
+		);
+		$this->resep_model->edit_menu($data,$this->input->post('id_menu'));
+		redirect('resep_controler');
+		
+	}
 	public function add(){
 		$data=[];
 		if($this->login_model->cek_session()){
@@ -63,5 +73,9 @@ class Resep_controler extends CI_Controller {
 	public function see($menu){
 		$data['resep']=$this->resep_model->get_resep($menu);
 		$this->load->view("resep/detail",$data);
+	}
+	public function edit($menu){
+		$data['resep']=$this->resep_model->get_resep($menu);
+		$this->load->view("resep/edit",$data);
 	}
 }

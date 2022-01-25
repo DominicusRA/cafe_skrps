@@ -10,10 +10,8 @@ class Login_controler extends CI_Controller {
     }
 	public function index()
 	{
-		// $this->load->view('loginview');
 		$status = $this->login_model->cek_session();
 		if($status){
-			// echo $status;
             redirect("dashboard_controler");
         }else{
             $this->load->view('login/login');

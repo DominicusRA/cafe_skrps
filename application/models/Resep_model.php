@@ -13,12 +13,16 @@
                 return false;
             }
         }
+        function edit_menu($data,$id_menu){
+            $this->db->where('id_menu', $id_menu);
+            $this->db->update('menu', $data);
+        }
         function get_menu(){
             return $this->db->query("SELECT * FROM menu");
         }
         function get_resep($id_menu){
 
-            $this->db->select('menu.kode_menu,menu.harga,menu.nama,bahan.nama_bahan,resep.takaran,satuan.satuan');
+            $this->db->select('menu.id_menu,menu.kode_menu,menu.harga,menu.nama,bahan.nama_bahan,resep.takaran,satuan.satuan');
             $this->db->from('resep');
             $this->db->join('menu', 'menu.id_menu=resep.id_menu');
             $this->db->join('bahan', 'bahan.id_bahan=resep.id_bahan');

@@ -345,11 +345,24 @@
                   </div>
                   <div class="col-2">
                     <label for="minimum_stok">Minimum Stok</label>
-                    <input type="text" name="minimum_stok" class="form-control form-control-sm">
+                    <input type="number" min="0" name="minimum_stok" class="form-control form-control-sm">
                   </div>
                   <div class="col-3">
                     <label for="satuan"> Satuan</label>
-                    <input type="text" name="satuan" class="form-control form-control-sm">
+                    <!-- <input type="text" name="satuan" class="form-control form-control-sm"> -->
+
+                    <select name="satuan" class="form-control select2" style="width: 100%;">
+                      <option selected="selected"></option>
+                      <?php
+                        foreach($satuan->result_array() as $data_satuan):
+                      ?>
+                      <option value="<?=$data_satuan['id_satuan']?>"><?=$data_satuan['satuan']?></option>
+                      <?php
+                        endforeach
+                      ?>
+                    </select>
+
+                    <!-- ini drop down -->
                   </div>
                 </div>
               </div>
