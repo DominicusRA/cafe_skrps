@@ -20,7 +20,10 @@
             return $this->db->get();
         }
         function get_penjualan_bulan(){
-            $this->db->select('MONTH(tanggal) AS bulan');
+            // versi MYSQL
+            // $this->db->select('MONTH(tanggal) AS bulan');
+            ///////////////
+            $this->db->select('EXTRACT(MONTH FROM nota.tanggal) AS bulan');
             $this->db->select_sum('menu_nota.jumlah');
             $this->db->from('menu_nota');
             $this->db->join('nota', 'nota.id_nota=menu_nota.id_nota');
