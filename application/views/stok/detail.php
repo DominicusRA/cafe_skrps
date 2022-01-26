@@ -105,8 +105,8 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Master
@@ -115,7 +115,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url() ?>index.php/resep_controler" class="nav-link active">
+                <a href="<?php echo base_url() ?>index.php/resep_controler" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Resep / Menu</p>
                 </a>
@@ -139,7 +139,7 @@
           </li> -->
           
           <li class="nav-item">
-            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link">
+            <a href="<?php echo base_url() ?>index.php/stok_controler" class="nav-link active">
               <i class="nav-icon fas fa-archive"></i>
               <p>
                 Stok
@@ -235,16 +235,17 @@
     <div class="content">
       <div class="container-fluid">
         <?php
-          foreach($resep->result_array() as $data_resep){
-            $menu=$data_resep['nama'];
-            $kode_menu=$data_resep['kode_menu'];
+          foreach($bahan->result_array() as $data_bahan){
+            $bahan=$data_bahan['nama_bahan'];
+            $kode_bahan=$data_bahan['kode_bahan'];
+            $satuan=$data_bahan['satuan'];
           }
         ?>
         <div class="row mb-2">
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item"><a href="<?php echo base_url() ?>index.php/resep_controler">Resep & Menu</a></li>
-              <li class="breadcrumb-item active">Detail <?=$menu?></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url() ?>index.php/stok_controler">Stok</a></li>
+              <li class="breadcrumb-item active">Detail</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -254,7 +255,7 @@
           <div class="card">
               <div class="card-header">
                 
-                <h3 class="card-title">Tabel Detail Resep</h3>
+                <h3 class="card-title">Tabel Detail Stok</h3>
                 <div class="card-tools">
                 </div>
               </div>
@@ -267,37 +268,35 @@
                       <div class="card-body">
                         <div class="row">
                           <div class="col-lg-2">
-                            Kode Menu
+                            Kode Bahan
                           </div>
                           <div class="col-lg-1">
                             :
                           </div>
                           <div class="col=lg-1">
-                            <?=$data_resep['kode_menu']?>
+                            <?=$data_bahan['kode_bahan']?>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-2">
-                            Nama Menu
+                            Nama Bahan
                           </div>
                           <div class="col-lg-1">
                             :
                           </div>
                           <div class="col=lg-1">
-                            <?=$data_resep['nama']?>
+                            <?=$data_bahan['nama_bahan']?>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-2">
-                            Harga
+                            Satuan
                           </div>
                           <div class="col-lg-1">
                             :
                           </div>
                           <div class="col=lg-1">
-                            Rp <?php if($data_resep['harga']>0)
-                                {echo number_format($data_resep['harga']);}
-                                else{echo '0';}?>
+                            <?=$data_bahan['satuan']?>
                           </div>
                         </div>
                       </div>
@@ -308,23 +307,21 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Menu</th>
-                      <th>Takaran</th>
-                      <th>Satuan</th>
+                      <th>Tanggal Stok</th>
+                      <th>Jumlah</th>
                     </tr>
                   </thead>
                   <tbody>
                     
                     <?php
                       $nomor=0;
-                      foreach($resep->result_array() as $data_resep):
+                      foreach($transaksi_stok->result_array() as $data_transaksi_stok):
                         $nomor++;
                     ?>
                     <tr>
                       <td><?=$nomor?></td>
-                      <td><?=$data_resep['nama_bahan']?></td>
-                      <td><?=$data_resep['takaran']?></td>
-                      <td><?=$data_resep['satuan']?></td>
+                      <td><?=$data_transaksi_stok['tanggal']?></td>
+                      <td><?=$data_transaksi_stok['jumlah']?></td>
                     </tr>
                     <?php
                       endforeach  

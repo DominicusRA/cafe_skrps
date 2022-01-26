@@ -290,9 +290,11 @@
                       <td><?=$keterangan?></td>
                       <td>
                         <!-- jika ada stok, button delete tidak muncul -->
-                        <button type="button" class="btn btn-primary">
-                          <i class="fa fa-eye"></i> Detail
-                        </button>
+                        <a href="<?php echo base_url() ?>index.php/stok_controler/detail/<?=$data_bahan['id_bahan']?>">
+                          <button type="button" class="btn btn-primary">
+                            <i class="fa fa-eye"></i> Detail
+                          </button>
+                        </a>
                       </td>
                     </tr>
 

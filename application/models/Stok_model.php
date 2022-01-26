@@ -7,7 +7,20 @@
             $this->db->from('bahan');
             $this->db->join('stok', 'stok.id_bahan=bahan.id_bahan');
             $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
-            
+            return $this->db->get();
+        }
+        function get_detail_transaksi($id_bahan){
+            $this->db->select('tanggal,jumlah');
+            $this->db->from('stok_masuk');
+            $this->db->where('id_bahan',$id_bahan);
+            return $this->db->get();
+        }
+        function get_detail_bahan($id_bahan){
+            $this->db->select('bahan.nama_bahan,bahan.kode_bahan,satuan.satuan');
+            $this->db->from('bahan');
+            $this->db->join('stok', 'stok.id_bahan=bahan.id_bahan');
+            $this->db->join('satuan', 'satuan.id_satuan=bahan.id_satuan');
+            $this->db->where('bahan.id_bahan',$id_bahan);
             return $this->db->get();
         }
         function add_stok($data_stok){

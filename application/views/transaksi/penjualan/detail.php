@@ -247,7 +247,7 @@
           <div class="col-lg-12">
           <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Penjualan</h3>
+                <h3 class="card-title">Detail Data Penjualan</h3>
                 <div class="card-tools">
                   <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
@@ -257,6 +257,21 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-2">
+                        Tanggal
+                      </div>
+                      <div class="col-lg-1">
+                        :
+                      </div>
+                      <div class="col=lg-1">
+                        <?=$tanggal?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <?php
                   // foreach
                 ?>
@@ -311,16 +326,6 @@
                       // $nomor++;
                     ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                      <th>No</th>
-                      <th>ID Nota</th>
-                      <th>Menu</th>
-                      <th>Jumlah</th>
-                    <!-- <th>Jumlah Produk Terjual</th> -->
-                    <th></th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

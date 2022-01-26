@@ -23,6 +23,7 @@ class Transaksi_controler extends CI_Controller {
 		if($this->login_model->cek_session()){
 
             $data['detail_jual']=$this->transaksi_model->get_detail_jual($tanggal);
+			$data['tanggal']=$tanggal;
             $this->load->view("transaksi/penjualan/detail",$data);
 			
 			// echo "<pre>";

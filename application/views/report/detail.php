@@ -257,6 +257,43 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-tools">
+
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <?php
+                    foreach($data_detail_report['data_report']->result_array() as $data_report){
+                      $kode_report=$data_report['kode_report'];
+                      $periode=$data_report['periode'];
+                    }                    
+                    ?>
+                    <div class="row">
+                          <div class="col-lg-2">
+                            Kode Report
+                          </div>
+                          <div class="col-lg-1">
+                            :
+                          </div>
+                          <div class="col=lg-1">
+                            <?=$kode_report?>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-2">
+                            Periode
+                          </div>
+                          <div class="col-lg-1">
+                            :
+                          </div>
+                          <div class="col=lg-1">
+                            <?=$periode?>
+                          </div>
+                        </div>
+                  </div>
+                </div>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>

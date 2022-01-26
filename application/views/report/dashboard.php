@@ -299,6 +299,7 @@
                         <a href="<?php echo base_url() ?>index.php/report_controler/create_report/">
                           <button type="button" class="btn btn-info" >
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                            Buat Report
                           </button>
                         </a>
                       </td>

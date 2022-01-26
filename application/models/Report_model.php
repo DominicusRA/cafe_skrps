@@ -41,6 +41,11 @@
             $data_resep_array=array();
             $data_bahan_array=array();
 
+            // ambil detail report
+            // $this->db->select('*');
+            // $this->db->from('report');
+            // $this->db->where('id_report',$id_report);
+            // $data['data_report']
             // buat memori array bahan
             $this->db->select('*');
             $this->db->from('stok');
@@ -71,7 +76,9 @@
             $this->db->select('*');
             $this->db->from('report_menu');
             $this->db->join('menu', 'menu.id_menu=report_menu.id_menu');
-            $this->db->where('id_report',$id_report);
+            $this->db->join('report', 'report.id_report=report_menu.id_report');
+            $this->db->where('report.id_report',$id_report);
+            // $this->db->limit(1);
             $data_report=$this->db->get();
             $data['data_report']=$data_report;
             // foreach($bahan->result_array() as $bahan){
@@ -113,7 +120,7 @@
             return $data;
 
         }
-        function create_report(){
+        function create_report_DISABLE(){
             $x=array(-4,-3,-2,-1,0,1,2,3,4);
             $x2=array();
             $y=array();
@@ -263,22 +270,127 @@
             // echo "</pre>";
             return true;
         }
-        function report_maker(){
-            // $ta
-            // $tanggal_cek.="asda";
+        function create_report(){
+            $x=array(-5,-3,-1,1,3,5);
+            $x2=array();
+            $y=array();
+            $xy=array();
+            $total_y=array();
+            $total_xy=array();
+            $a=array();
+            $b=array();
+            $hasil=array();
 
+            for($i=0;$i<count($x);$i++){
+                array_push($x2,pow($x[$i],2));
+            }
+            $this->db->select('*');
+            $this->db->from('menu');
+            $menu=$this->db->get();
+
+            foreach($menu->result_array() as $data_menu){
+                $data_jual=array();
+                $test_bulan=12;
+                for($bulan=6;$bulan>=1;$bulan--){
+                    $this->db->select_sum('menu_nota.jumlah');
+                    $this->db->from('menu_nota');
+                    $this->db->join('nota', 'nota.id_nota=menu_nota.id_nota');
+                    $this->db->where('menu_nota.id_menu', $data_menu['id_menu']);
+                    $this->db->where('MONTH(nota.tanggal)',date('m', strtotime('-'.$bulan.' month')));
+                    $this->db->where('YEAR(nota.tanggal)',date('Y', strtotime('-'.$bulan.' month')));
+                    $count_jual=$this->db->get();
+                    $i=0;
+                    foreach($count_jual->result_array() as $data_count_jual){
+                        array_push($data_jual,isset($data_count_jual['jumlah']) ? $data_count_jual['jumlah'] : '0');
+                    }
+                    $test_bulan--;
+                }
+                $y+=array($data_menu['id_menu']=>$data_jual);
+            }
+            foreach($menu->result_array() as $data_menu){
+                $data_xy=array();
+                $t_y=0;
+                for($i=0;$i<6;$i++){
+                    array_push($data_xy,$y[$data_menu['id_menu']][$i]*$x[$i]);
+                    $t_y+=$y[$data_menu['id_menu']][$i];
+                }
+                $xy+=array($data_menu['id_menu']=>$data_xy);
+                $total_y+=array($data_menu['id_menu']=>$t_y);
+                $total_xy+=array($data_menu['id_menu']=>array_sum($xy[$data_menu['id_menu']]));
+                $a+=array($data_menu['id_menu']=>$total_y[$data_menu['id_menu']]/count($x));
+                $b+=array($data_menu['id_menu']=>$total_xy[$data_menu['id_menu']]/array_sum($x2));
+                $hasil+=array($data_menu['id_menu']=>$a[$data_menu['id_menu']]+$b[$data_menu['id_menu']]*7);
+
+
+            }
+
+            //////////////////////////////////////////////////////////////
+            // JANGAN DI HAPUS
+            // untuk cek proses data
+            // echo "<pre>";
+            // echo "y : ";
+            // print_r($y);
+            // echo "xy : ";
+            // print_r($xy);
+            // echo "X^2 : ";
+            // print_r($x2);
+            // echo "Total y : ";
+            // print_r($total_y);
+            // echo "Total xy : ";
+            // print_r($total_xy);
+            // echo "A : ";
+            // print_r($a);
+            // echo "B : ";
+            // print_r($b);
+            // echo "Total x^2 : ".array_sum($x2)."<br>";
+            // echo "HASIL : ";
+            // print_r($hasil);
+            // echo "</pre>";
+            // echo count($hasil);
+            //////////////////////////////////////////////////////////////
+
+            $data_header_report=array(
+                'periode'=>date('m-Y', strtotime('-1 month')),
+                'kode_report'=> "RPT/".date('m',strtotime('-1 month'))."/".date('Y')
+            );
+
+            $this->db->select('kode_report');
+            $this->db->from('report');
+            $this->db->where($data_header_report);
+            $this->db->limit(1);
+            if($this->db->count_all_results()==0){
+                if($this->db->insert('report',$data_header_report)){
+                    $id_report = $this->db->insert_id();
+                    $i=0;
+                    foreach($menu->result_array() as $data_menu){
+                        $data_hasil[$i]=array(
+                            'id_report' => $id_report,
+                            'id_menu' => $data_menu['id_menu'],
+                            'jumlah_prediksi' => round($hasil[$data_menu['id_menu']])
+                        );
+                        // }
+                        $this->db->insert('report_menu',$data_hasil[$i]);
+                        $i++;
+                    }
+                }
+            }
+
+            
+        }
+        function report_maker(){
+            // ini untuk cari tanggal terakhir report
             $this->db->select('*');
             $this->db->from('report');
             $this->db->order_by('periode', 'ASC');
             $this->db->limit(1);
             $tanggal=$this->db->get();
-
+            // ini untuk cari tanggal terakhir transaksi
             $this->db->select('*');
             $this->db->from('nota');
             $this->db->order_by('tanggal', 'ASC');
             $this->db->limit(1); 
             $tanggal_nota=$this->db->get();
-
+            // untuk masukan hasil query ke dalam value tanggal_cek
             foreach($tanggal_nota->result_array() as $data_tanggal){
                 // $tanggal_cek.=$data_tanggal['tanggal'];
                 $datetime_report_maker = new DateTime($data_tanggal['tanggal']);
@@ -293,6 +405,8 @@
             // for($cek_bulan=0;)
             $datetime_tanggal_cek = new DateTime($tanggal_cek);
             // $cek_bulan=0;
+
+            // di ulang dari tanggal nota terakhir sampai tanggal hari ini
             while(date('m-Y')<$datetime_tanggal_cek->format('m-Y')){
                 echo "masuk <br>";
                 echo date('m-Y')." >= ";

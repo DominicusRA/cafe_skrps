@@ -18,7 +18,7 @@ class Dashboard_controler extends CI_Controller {
 			$this->load->view('dashboard/dashboard',$data);
 
         }else{
-            $this->load->view('login_view');
+            $this->load->view('login/login');
         }
 	}
 }

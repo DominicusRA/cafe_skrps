@@ -57,5 +57,10 @@ class Stok_controler extends CI_Controller {
 			$this->db->insert('stok',$data_stok);
 
 		}
-}
+	}
+	public function detail($id_bahan){
+		$data['bahan']=$this->stok_model->get_detail_bahan($id_bahan);
+		$data['transaksi_stok']=$this->stok_model->get_detail_transaksi($id_bahan);
+        $this->load->view("stok/detail",$data);
+	}
 }
