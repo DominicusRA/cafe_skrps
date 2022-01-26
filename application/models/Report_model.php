@@ -374,8 +374,7 @@
                     }
                 }
             }
-
-            
+            return true;            
         }
         function report_maker(){
             // ini untuk cari tanggal terakhir report
