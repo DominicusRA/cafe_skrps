@@ -1,0 +1,23 @@
+.bg-kopi {
+    /* The image used */
+    /* background-image: url("/assets/image/bg_kopi.jpeg"); */
+  
+    /* Add the blur effect */
+    /* filter: blur(8px);
+    -webkit-filter: blur(8px); */
+  
+    /* Full height */
+    /* height: 100%; */
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-blur{
+    background: rgba(0, 0, 0, 0.5);
+    /* color: white; */
+}
+.title-bg-blur{
+    color: white;
+}
