@@ -22,3 +22,10 @@
 .title-bg-blur{
     color: white;
 }
+
+.img-menu {
+    max-width: 1500px;  
+    max-height: 1500px; 
+    width: 150;  
+    height: 150;
+}
