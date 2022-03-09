@@ -23,6 +23,7 @@ class Karyawan_controler extends CI_Controller {
 		echo $id_user;
 	}
 	public function edit($id_user){
-
+		$data['karyawan']=$this->karyawan_model->get_data_karyawan($id_user);
+		$this->load->view('karyawan/edit',$data);
 	}
 }

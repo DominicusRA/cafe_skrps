@@ -8,5 +8,13 @@
             $data=$this->db->get();
             return $data;
         }
+        function get_data_karyawan($id_user){
+            $this->db->select('*');
+            $this->db->from('user');
+            $this->db->join('akses_user','akses_user.id_user=user.id_user');
+            $this->db->join('akses','akses.id_akses=akses_user.id_akses');
+            $data=$this->db->get();
+            return $data;
+        }
     }
 ?>

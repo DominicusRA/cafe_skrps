@@ -244,6 +244,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item active">Karyawan</li>
+              <li class="breadcrumb-item active">Edit</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -254,55 +255,70 @@
                 
                 <h3 class="card-title">Tabel Karyawan</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
+                  <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
                     Tambah Data
-                  </button>
+                  </button> -->
                 </div>
               </div>
               <!-- /.card-header -->
+              <?php
+                
+              ?>
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama User</th>
-                      <th>Akses</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                    <?php
-                      $nomor=0;
-                      foreach($karyawan->result_array() as $data_karyawan):
-                        $nomor++;
-                    ?>
-                    <tr>
-                      <td><?=$nomor?></td>
-                      <td><?=$data_karyawan['nama']?></td>
-                      <td><?=$data_karyawan['akses']?></td>
-                      <td>
-                        <a href="<?php echo base_url() ?>index.php/karyawan_controler/see/<?=$data_karyawan['id_user']?>">
-                          <!-- <button type="button" class="btn btn-info" >
-                            <i class="fa fa-eye"></i>
-                            Detail
-                          </button> -->
-                        </a>
-                        <a href="<?php echo base_url() ?>index.php/karyawan_controler/edit/<?=$data_karyawan['id_user']?>">
-                          <button type="button" class="btn btn-success" >
-                            <i class="fas fa-pencil-alt"></i>
-                            Edit
-                          </button>
-                        </a>
-                        
-                      </td>
-                    </tr>
-                    <?php
-                      endforeach  
-                    ?>
-                  </tbody>
-                </table>
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-2">
+                          Nama User
+                        </div>
+                        <div class="col-lg-1">
+                          :
+                        </div>
+                        <div class="col=lg-1">
+                          
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-2">
+                          Akses
+                        </div>
+                        <div class="col-lg-1">
+                          :
+                        </div>
+                        <div class="col=lg-1">
+                          
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-2">
+                          Username
+                        </div>
+                        <div class="col-lg-1">
+                          :
+                        </div>
+                        <div class="col=lg-1">
+                          
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-2">
+                          Password
+                        </div>
+                        <div class="col-lg-1">
+                          :
+                        </div>
+                        <div class="col=lg-1">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
