@@ -254,10 +254,10 @@
                 
                 <h3 class="card-title">Tabel Karyawan</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
+                  <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-data-bahan">
                     <i class="fa fa-plus"></i>
                     Tambah Data
-                  </button>
+                  </button> -->
                 </div>
               </div>
               <!-- /.card-header -->
@@ -319,112 +319,6 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form id="form_resep" action="<?php echo base_url() ?>index.php/resep_controler/add" method="post">
-              <div class="modal-body">
-                <!-- <p>One fine body&hellip;</p> -->
-
-                <div class="row">
-                  <div class="container">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="row">
-                          <?php
-                            if($last_code->result_array()==null){
-                              $kode_menu="MNU/001";
-                            }else{
-                              foreach($last_code->result_array() as $last_code):
-                                if($last_code['kode_menu']!=null){
-                                  $explode_kode = explode("/", $last_code['kode_menu']);
-                                  $last_explode_kode = end($explode_kode)+1;
-                                  $last_explode_kode = sprintf("%03s", ($last_explode_kode));
-                                  $kode_menu="MNU/".$last_explode_kode;
-                                }else{
-                                  $kode_menu="MNU/001";
-                                }
-                              endforeach;
-                            }
-                          ?>
-                          <div class="col-3">
-                            <label for="bahan">Kode Menu</label>
-                            <input type="text" value="<?=$kode_menu?>" name="kode_menu" class="form-control form-control-sm" readonly>
-                          </div>
-                          <div class="col-5">
-                            <label for="bahan">Nama Menu</label>
-                            <input type="text" name="menu" class="form-control form-control-sm">
-                          </div>
-                          <div class="col-3">
-                            <label for="harga">Harga</label>
-                            <input type="text" name="harga" class="form-control form-control-sm">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="container">
-                    <div class="card">
-                      <div class="card-header">
-                        Ingredients
-                      </div>
-                      <div class="card-body">
-                        <table class="table table-borderless" id="resep" >
-                          <tr>
-                            <td>
-                              <label for="bahan">Nama Bahan</label>
-                            </td>
-                            <td>
-                              <label for="bahan">Jumlah</label>
-                            </td>
-                            <td>
-                              <label for="bahan">Satuan</label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td id="bahan_col">
-                            
-                              <select name="select_bahan[]" id="select_bahan[]" class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>
-                                <?php
-                                  foreach($bahan->result_array() as $data_bahan):
-                                ?>
-                                <option value="<?=$data_bahan['id_bahan']?>"><?=$data_bahan['nama_bahan']?></option>
-                                <?php
-                                  endforeach
-                                ?>
-                              </select>
-                            </td>
-                            <td id="jumlah_col">
-                              <input type="number" id="jumlah[]" name="jumlah[]" value=""class="form-control form-control-sm" >
-                            </td>
-                            <td>
-                              <div class="satuan">Gr</div>
-                            </td>
-                          </tr>
-                          
-                        </table>
-                        <div class="row">
-                          <div class="col-sm">
-                            <div class="container">
-                              <!-- button -->
-                              <button id="add" type="button" class="btn btn-primary" ><i class="fa fa-plus"></i></button>
-
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" >Save</button>
-              </div>
-            </form>
           </div>
           <!-- /.modal-content -->
         </div>

@@ -24,6 +24,18 @@ class Karyawan_controler extends CI_Controller {
 	}
 	public function edit($id_user){
 		$data['karyawan']=$this->karyawan_model->get_data_karyawan($id_user);
+		$data['akses']=$this->karyawan_model->get_akses();
 		$this->load->view('karyawan/edit',$data);
+	}
+	public function edit_data(){
+		// echo "welkom to karyawan kontroler in edit data";
+		$data['akses_user']=array(
+			'id_akses' => $this->input->post('id_akses')
+		);
+		$data['user']=array(
+			'nama' => $this->input->post('nama_user')
+		);
+		$status=$this->karyawan_model->edit_user($data,$this->input->post('id_user'));
+		redirect('karyawan_controler');
 	}
 }
