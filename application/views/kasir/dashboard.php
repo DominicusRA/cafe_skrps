@@ -90,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       foreach($menu->result_array() as $data_menu):
                         $nomor++;
                     ?>
-                    <div class="col-lg-4" id="menu">
+                    <div class="col-lg-4 " id="menu">
                       <a href="<?php echo base_url() ?>index.php/kasir_controler/add_cart/<?=$data_menu['id_menu']?>" style="color: black">
                         <div class="card">
                           <!-- <img src="<?php echo base_url() ?>assets/dist/img/default-150x150.png" alt="" class="card-img-top"> -->
@@ -150,12 +150,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <?php
                     $cart=array();
                     $cart=$this->session->userdata('Cart');
+                    $total_harga=0;
                     // echo count($cart);
                     if($cart!=null){
                       foreach($cart as $data_cart):
                         // echo $data_cart;
                         foreach($menu->result_array() as $data_menu):
                           if($data_menu['id_menu']==$data_cart){
+                            $total_harga+=$data_menu['harga']
                   ?>
                   <a href="" style="color: black">
                     <div class="row">
@@ -185,13 +187,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               </div>
               <div class="card-footer">
-                
-                <!-- <a href="<?php echo base_url() ?>index.php/kasir_controler/bayar" > -->
-                  <button type="submit" class="btn btn-success btn-block" id="delete_cart">
-                  <form>
-                    <!-- <i class="fa fa-trash"></i> -->
-                    Bayar
-                  </button>
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="float-left">
+                        TOTAL BAYAR 
+                      </div>
+                      <div class="float-right">
+                        <b>Rp <?=$total_harga?></b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <button type="button" class="btn btn-success btn-block" id="delete_cart">
+                        <form>
+                          Bayar
+                      </button>
+
+                    </div>
+                  </div>
+                </div>
                 <!-- </a> -->
               </div>
             </div>
