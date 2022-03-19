@@ -37,5 +37,12 @@
                 return false;
             }
         }
+        function get_cart($cart){
+            // print_r($cart);
+            $this->db->select('*');
+            $this->db->from('menu');
+            $this->db->where_in('id_menu',$cart);
+            return $this->db->get();
+        }
     }
 ?>

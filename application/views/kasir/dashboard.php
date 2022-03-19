@@ -87,6 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="row">
                     <?php
                       $nomor=0;
+                      
                       foreach($menu->result_array() as $data_menu):
                         $nomor++;
                     ?>
@@ -145,19 +146,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
               <div class="card-body">
-
                 <div class="container" id="nota">
                   <?php
-                    $cart=array();
-                    $cart=$this->session->userdata('Cart');
                     $total_harga=0;
-                    // echo count($cart);
                     if($cart!=null){
-                      foreach($cart as $data_cart):
-                        // echo $data_cart;
-                        foreach($menu->result_array() as $data_menu):
-                          if($data_menu['id_menu']==$data_cart){
-                            $total_harga+=$data_menu['harga']
+                      // print_r($jumlah);
+                      foreach($cart->result_array() as $data_cart):
+                        $total_harga+=$data_cart['harga']*$jumlah[$data_cart['id_menu']]
                   ?>
                   <a href="" style="color: black">
                     <div class="row">
@@ -165,22 +160,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="card">
                           <div class="card-body">
                             <div class="float-left">
-                              <?=$data_menu['nama']?>
+                              <?=$data_cart['nama']?>
                             </div>
                             <div class="float-right">
-                              Rp <?=isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?>
+                              <?=$jumlah[$data_cart['id_menu']]?> x 
+                              Rp <?=isset($data_cart['harga']) ? $data_cart['harga'] : '0' ?>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-
                   </a>
                   <?php
-                          }
-                        endforeach;
                       endforeach;
-
                     }
                   ?>
                 </div>

@@ -12,8 +12,15 @@ class Kasir_controler extends CI_Controller {
 		// $this->load->view('kasir/dashboard');
 
 		if($this->login_model->cek_session()){
+			$data['cart']=null;
 
             $data['menu']=$this->kasir_model->get_menu();
+			if($this->session->userdata('Cart')!=null){
+				$cart_data=array_count_values($this->session->userdata('Cart'));
+				$data['cart']=$this->kasir_model->get_cart(array_keys($cart_data));
+				$data['jumlah']=$cart_data;
+			}
+
             $this->load->view("kasir/dashboard",$data);
 
         }else{
@@ -26,13 +33,13 @@ class Kasir_controler extends CI_Controller {
 			$cart_data = $this->session->userdata('Cart');
 		}
 		array_push($cart_data,$menu);
-		// $this->session->set_userdata('Cart',$cart_data);
-		if($this->session->set_userdata('Cart',$cart_data)){
-			redirect('kasir_controler');
-		}else{
-			redirect('kasir_controler');
-		}
-		// $this->session->unset_userdata('Cart');
+		$this->session->set_userdata('Cart',$cart_data);
+		// if($this->session->set_userdata('Cart',$cart_data)){
+		// 	redirect('kasir_controler');
+		// }else{
+			// }
+			// $this->session->unset_userdata('Cart');
+		redirect('kasir_controler');
 	}
 	public function delete_cart(){
 		$this->session->unset_userdata('Cart');
@@ -104,11 +111,6 @@ class Kasir_controler extends CI_Controller {
 					// echo mt_rand(23, 36);
 					array_push($cart_data,mt_rand(23, 36));
 				}
-				
-		
-		
-		
-		
 				$data_nota=array(
 					// 'tanggal' => date("Y/m/d"),
 					'tanggal' => $datetime->format('Y-m-d'),
@@ -118,9 +120,7 @@ class Kasir_controler extends CI_Controller {
 				if($this->db->insert('nota',$data_nota)){
 					$id_nota = $this->db->insert_id();
 					// $cart_data = $this->session->userdata('Cart');
-		
 					// print_r($cart_data);
-		
 					for ($i = 0; $i < count($cart_data); $i++) {
 						$data_cart[$i]=array(
 							'id_nota' => $id_nota,
@@ -135,11 +135,9 @@ class Kasir_controler extends CI_Controller {
 			}else{
 				echo "LIBUR";
 			}
-				
 		}
 		//kecuali MON
 		// echo $datetime->format('Y-m-d');
 		echo "SELESAI";
-		
 	}
 }
