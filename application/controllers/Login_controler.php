@@ -4,7 +4,7 @@ ob_start();
 
 class Login_controler extends CI_Controller
 {
-	public function __construct()
+	function __construct()
 	{
 		parent::__construct();
 		// session_start();
