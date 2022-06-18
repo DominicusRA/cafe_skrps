@@ -8,6 +8,10 @@ class Kasir_controler extends CI_Controller
 		parent::__construct();
 		$this->load->model('kasir_model');
 		$this->load->model('login_model');
+
+		if ($this->session->userdata('akses') != "kasir") {
+			redirect('login_controler');
+		};
 	}
 	public function index()
 	{

@@ -9,15 +9,30 @@ class Login_controler extends CI_Controller
 		// session_start();
 		// $this->load->library('form_validation');
 		$this->load->model('login_model');
+
+		// if ($this->session->userdata('akses') == "admin") {
+		// 	redirect('dashboard_controler');
+		// } elseif ($this->session->userdata('akses') == "kasir") {
+		// 	redirect('kasir_controler');
+		// };
 	}
 	public function index()
 	{
-		$status = $this->login_model->cek_session();
-		if ($status) {
-			redirect("dashboard_controler");
+		if ($this->session->userdata('akses') == "admin") {
+			redirect('dashboard_controler');
+		} elseif ($this->session->userdata('akses') == "kasir") {
+			redirect('kasir_controler');
 		} else {
 			$this->load->view('login/login');
-		}
+		};
+
+
+		// $status = $this->login_model->cek_session();
+		// if ($status) {
+		// 	redirect("dashboard_controler");
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 	public function cek_log()
 	{
