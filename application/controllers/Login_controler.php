@@ -6,19 +6,14 @@ class Login_controler extends CI_Controller
 {
 	public function __construct()
 	{
-		// Index::index();
 		parent::__construct();
-		// session_start();
-		// $this->load->library('form_validation');
-		$this->load->library('session');
 		$this->load->model('login_model');
-		session_start();
 
-		// if ($this->session->userdata('akses') == "admin") {
-		// 	redirect('dashboard_controler');
-		// } elseif ($this->session->userdata('akses') == "kasir") {
-		// 	redirect('kasir_controler');
-		// };
+		if ($this->session->userdata('akses') == "admin") {
+			redirect('dashboard_controler');
+		} elseif ($this->session->userdata('akses') == "kasir") {
+			redirect('kasir_controler');
+		};
 	}
 	public function index()
 	{
