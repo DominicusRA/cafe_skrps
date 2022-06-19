@@ -7,7 +7,7 @@ class Login_controler extends CI_Controller
 	public function __construct()
 	{
 		// Index::index();
-		parent::__construct();
+		// parent::__construct();
 		// session_start();
 		// $this->load->library('form_validation');
 		$this->load->model('login_model');
