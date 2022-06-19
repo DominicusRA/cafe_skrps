@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-ob_start();
+// ob_start();
 
 class Login_controler extends CI_Controller
 {
 	public function __construct()
 	{
+		// Index::index();
 		parent::__construct();
 		// session_start();
 		// $this->load->library('form_validation');
@@ -64,6 +65,12 @@ class Login_controler extends CI_Controller
 			$this->index();
 		}
 	}
+
+	// public function write($id, $data): bool
+	// {
+	// 	return file_put_contents("$this->savePath/sess_$id", $data) === false ? false : true;
+	// }
+
 	public function log_out()
 	{
 		$this->session->sess_destroy();
