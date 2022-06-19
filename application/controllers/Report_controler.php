@@ -16,13 +16,13 @@ class Report_controler extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->login_model->cek_session()) {
-			$data['report'] = $this->report_model->get_report();
-			$data['new_report'] = $this->report_model->get_new_report();
-			$this->load->view("report/dashboard", $data);
-		} else {
-			$this->load->view('login/login.php');
-		}
+		// if ($this->login_model->cek_session()) {
+		$data['report'] = $this->report_model->get_report();
+		$data['new_report'] = $this->report_model->get_new_report();
+		$this->load->view("report/dashboard", $data);
+		// } else {
+		// 	$this->load->view('login/login.php');
+		// }
 	}
 	public function create_report()
 	{

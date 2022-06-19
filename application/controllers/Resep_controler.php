@@ -16,14 +16,14 @@ class Resep_controler extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->login_model->cek_session()) {
-			$data['bahan'] = $this->resep_model->get_bahan();
-			$data['menu'] = $this->resep_model->get_menu();
-			$data['last_code'] = $this->resep_model->get_code();
-			$this->load->view("resep/dashboard", $data);
-		} else {
-			$this->load->view('login/login');
-		}
+		// if ($this->login_model->cek_session()) {
+		$data['bahan'] = $this->resep_model->get_bahan();
+		$data['menu'] = $this->resep_model->get_menu();
+		$data['last_code'] = $this->resep_model->get_code();
+		$this->load->view("resep/dashboard", $data);
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 	public function edit_data()
 	{

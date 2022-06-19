@@ -16,15 +16,15 @@ class Transaksi_controler extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->login_model->cek_session()) {
+		$data['tanggal_jual'] = $this->transaksi_model->get_tanggal_jual();
+		$this->load->view("transaksi/penjualan/dashboard", $data);
+		// if ($this->login_model->cek_session()) {
 
-			$data['tanggal_jual'] = $this->transaksi_model->get_tanggal_jual();
-			$this->load->view("transaksi/penjualan/dashboard", $data);
-			// $this->load->view("transaksi/dashboard",$data);
+		// 	// $this->load->view("transaksi/dashboard",$data);
 
-		} else {
-			$this->load->view('login/login');
-		}
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 	public function detail_penjualan($tanggal)
 	{

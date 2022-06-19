@@ -17,20 +17,20 @@ class Kasir_controler extends CI_Controller
 	{
 		// $this->load->view('kasir/dashboard');
 
-		if ($this->login_model->cek_session()) {
-			$data['cart'] = null;
+		// if ($this->login_model->cek_session()) {
+		$data['cart'] = null;
 
-			$data['menu'] = $this->kasir_model->get_menu();
-			if ($this->session->userdata('Cart') != null) {
-				$cart_data = array_count_values($this->session->userdata('Cart'));
-				$data['cart'] = $this->kasir_model->get_cart(array_keys($cart_data));
-				$data['jumlah'] = $cart_data;
-			}
-
-			$this->load->view("kasir/dashboard", $data);
-		} else {
-			$this->load->view('login/login.php');
+		$data['menu'] = $this->kasir_model->get_menu();
+		if ($this->session->userdata('Cart') != null) {
+			$cart_data = array_count_values($this->session->userdata('Cart'));
+			$data['cart'] = $this->kasir_model->get_cart(array_keys($cart_data));
+			$data['jumlah'] = $cart_data;
 		}
+
+		$this->load->view("kasir/dashboard", $data);
+		// } else {
+		// 	$this->load->view('login/login.php');
+		// }
 	}
 	public function add_cart($menu)
 	{

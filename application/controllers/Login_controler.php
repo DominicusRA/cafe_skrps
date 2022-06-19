@@ -8,12 +8,6 @@ class Login_controler extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('login_model');
-
-		if ($this->session->userdata('akses') == "admin") {
-			redirect('dashboard_controler');
-		} elseif ($this->session->userdata('akses') == "kasir") {
-			redirect('kasir_controler');
-		};
 	}
 	public function index()
 	{
@@ -24,14 +18,6 @@ class Login_controler extends CI_Controller
 		} else {
 			$this->load->view('login/login');
 		};
-
-
-		// $status = $this->login_model->cek_session();
-		// if ($status) {
-		// 	redirect("dashboard_controler");
-		// } else {
-		// 	$this->load->view('login/login');
-		// }
 	}
 	public function cek_log()
 	{
@@ -62,12 +48,6 @@ class Login_controler extends CI_Controller
 			$this->index();
 		}
 	}
-
-	// public function write($id, $data): bool
-	// {
-	// 	return file_put_contents("$this->savePath/sess_$id", $data) === false ? false : true;
-	// }
-
 	public function log_out()
 	{
 		$this->session->sess_destroy();

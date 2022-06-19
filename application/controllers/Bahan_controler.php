@@ -17,15 +17,15 @@ class Bahan_controler extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->login_model->cek_session()) {
+		$data['bahan'] = $this->bahan_model->get_bahan();
+		$data['last_code'] = $this->bahan_model->get_code();
+		$data['satuan'] = $this->bahan_model->get_satuan();
+		$this->load->view("bahan/dashboard", $data);
+		// if ($this->login_model->cek_session()) {
 
-			$data['bahan'] = $this->bahan_model->get_bahan();
-			$data['last_code'] = $this->bahan_model->get_code();
-			$data['satuan'] = $this->bahan_model->get_satuan();
-			$this->load->view("bahan/dashboard", $data);
-		} else {
-			$this->load->view('login_view');
-		}
+		// } else {
+		// 	$this->load->view('login_view');
+		// }
 	}
 	public function add()
 	{

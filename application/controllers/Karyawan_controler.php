@@ -17,13 +17,13 @@ class Karyawan_controler extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->login_model->cek_session()) {
+		// if ($this->login_model->cek_session()) {
 
-			$data['karyawan'] = $this->karyawan_model->get_karyawan();
-			$this->load->view('karyawan/dashboard', $data);
-		} else {
-			$this->load->view('login/login');
-		}
+		$data['karyawan'] = $this->karyawan_model->get_karyawan();
+		$this->load->view('karyawan/dashboard', $data);
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 	public function see($id_user)
 	{
