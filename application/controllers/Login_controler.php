@@ -12,6 +12,7 @@ class Login_controler extends CI_Controller
 		// $this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('login_model');
+		session_start();
 
 		// if ($this->session->userdata('akses') == "admin") {
 		// 	redirect('dashboard_controler');
