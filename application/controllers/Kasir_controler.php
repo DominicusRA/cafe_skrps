@@ -9,7 +9,7 @@ class Kasir_controler extends CI_Controller
 		$this->load->model('kasir_model');
 		$this->load->model('login_model');
 
-		if ($this->session->userdata('akses') != "kasir") {
+		if ($this->session->userdata('akses') != "kasir" && $this->session->userdata('akses') != "master") {
 			redirect('login_controler');
 		};
 	}

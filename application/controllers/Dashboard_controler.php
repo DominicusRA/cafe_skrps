@@ -9,7 +9,7 @@ class Dashboard_controler extends CI_Controller
 		// $this->load->library('form_validation');
 		$this->load->model('dashboard_model');
 		$this->load->model('login_model');
-		if ($this->session->userdata('akses') != "admin") {
+		if ($this->session->userdata('akses') != "admin" && $this->session->userdata('akses') != "master") {
 			redirect('login_controler');
 		};
 	}

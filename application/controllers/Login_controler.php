@@ -15,6 +15,8 @@ class Login_controler extends CI_Controller
 			redirect('dashboard_controler');
 		} elseif ($this->session->userdata('akses') == "kasir") {
 			redirect('kasir_controler');
+		} elseif ($this->session->userdata('akses') == "master") {
+			redirect('dashboard_controler');
 		} else {
 			$this->load->view('login/login');
 		};
@@ -41,6 +43,8 @@ class Login_controler extends CI_Controller
 			// echo $this->session->userdata('akses');
 			if ($this->session->userdata('akses') == "admin") {
 				redirect("dashboard_controler");
+			} elseif ($this->session->userdata('akses') == "master") {
+				redirect('dashboard_controler');
 			} else if ($this->session->userdata('akses') == "kasir") {
 				redirect("kasir_controler");
 			}

@@ -9,7 +9,7 @@ class Report_controler extends CI_Controller
 		$this->load->model('report_model');
 		$this->load->model('login_model');
 
-		if ($this->session->userdata('akses') != "admin") {
+		if ($this->session->userdata('akses') != "admin" && $this->session->userdata('akses') != "master") {
 			$url = base_url('login');
 			redirect('login_controler');
 		};
