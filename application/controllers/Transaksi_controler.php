@@ -28,19 +28,19 @@ class Transaksi_controler extends CI_Controller
 	}
 	public function detail_penjualan($tanggal)
 	{
-		if ($this->login_model->cek_session()) {
+		// if ($this->login_model->cek_session()) {
 
-			$data['detail_jual'] = $this->transaksi_model->get_detail_jual($tanggal);
-			$data['tanggal'] = $tanggal;
-			$this->load->view("transaksi/penjualan/detail", $data);
+		$data['detail_jual'] = $this->transaksi_model->get_detail_jual($tanggal);
+		$data['tanggal'] = $tanggal;
+		$this->load->view("transaksi/penjualan/detail", $data);
 
-			// echo "<pre>";
-			// print_r($data['detail_jual']);
-			// echo "</pre>";
-			// $this->load->view("transaksi/dashboard",$data);
+		// echo "<pre>";
+		// print_r($data['detail_jual']);
+		// echo "</pre>";
+		// $this->load->view("transaksi/dashboard",$data);
 
-		} else {
-			$this->load->view('login/login');
-		}
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 }

@@ -109,7 +109,7 @@ class Kasir_controler extends CI_Controller
 		$datetime = new DateTime($tanggal);
 		$tanggl_loop = $datetime->format('Y-m-d');
 
-		while ($tanggl_loop <= '2021-11-29') {
+		while ($tanggl_loop <= '2022-06-29') {
 			$datetime->modify('+1 day');
 			$tanggl_loop = $datetime->format('Y-m-d');
 			echo $tanggl_loop . "/" . $datetime->format('D'), "<br>";
