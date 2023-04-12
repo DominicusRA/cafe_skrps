@@ -81,8 +81,60 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="content">
         <div class="container overflow-auto">
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-2">
+              <div class="card h-100">
+                <div class="card-header">
+                  <h5 class="card-title m-0">Menu</h5>
+                  <div class="card-tools">
+                    <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <a href="" style="color: black">
+                    <div class="row">
+                      <div class="col-sm">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="float-left">
+                              Coffe Base
+                            </div>
+                            <div class="float-right">
+                              <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="" style="color: black">
+                    <div class="row">
+                      <div class="col-sm">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="float-left">
+                              Milk Base
+                            </div>
+                            <div class="float-right">
+                              <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                </div>
+                <div class="card-footer">
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-7">
               <div class="card card-row">
+                <div class="card-header">
+                  Coffe Base
+                </div>
                 <div class="card-body overflow-auto">
 
                   <div class="container">
@@ -127,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.col-md-6 -->
 
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="card h-100">
                 <div class="card-header">
                   <h5 class="card-title m-0">Nota</h5>
