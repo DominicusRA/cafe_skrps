@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
   <!-- Font Awesome Icons -->
-  <!-- <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css"> -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> -->
 
@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <nav class="main-header navbar navbar-expand-lg navbar-light navbar-white">
       <div class="container">
         <img src="<?php echo base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">DREAM CAFE Coffe & Tea</span>
@@ -80,59 +80,133 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container overflow-auto">
-          <div class="row">
-            <div class="col-lg-2">
-              <div class="card h-100">
-                <div class="card-header">
-                  <h5 class="card-title m-0">Menu</h5>
-                  <div class="card-tools">
-                    <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
-                    </a>
+          <div class="row ">
+            <div class="col-lg-3 ">
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-center">
+                      <h5 class="card-title m-0">Menu</h5>
+                      <div class="card-tools">
+                        <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="card-body">
+
+                      <div class="sidebar">
+                        <nav class="mt-2">
+                          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <p>
+                                  Beverages
+                                  <i class="right fas fa-angle-left"></i>
+                                </p>
+                              </a>
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="./index.html" class="nav-link">
+                                    <p>Coffe Base</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="./index2.html" class="nav-link">
+                                    <p>Milk Base</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="./index3.html" class="nav-link">
+                                    <p>Fruits</p>
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <p>
+                                  Snack
+                                  <i class="right fas fa-angle-left"></i>
+                                </p>
+                              </a>
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="./index.html" class="nav-link">
+                                    <p>salty</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="./index2.html" class="nav-link">
+                                    <p>sweet</p>
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <p>
+                                  Food
+                                  <!-- <i class="right fas fa-angle-left"></i> -->
+                                </p>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <p>
+                                  Promo
+                                  <!-- <i class="right fas fa-angle-left"></i> -->
+                                </p>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                        <!-- /.sidebar-menu -->
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="card-body">
-                  <a href="" style="color: black">
-                    <div class="row">
-                      <div class="col-sm">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="float-left">
-                              Coffe Base
-                            </div>
-                            <div class="float-right">
-                              <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" style="color: black">
-                    <div class="row">
-                      <div class="col-sm">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="float-left">
-                              Milk Base
-                            </div>
-                            <div class="float-right">
-                              <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
 
                 </div>
-                <div class="card-footer">
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-center">
+                      <h5 class="card-title m-0">Order</h5>
+                      <div class="card-tools">
+                        <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col">Total</div>
+                            <div class="col">Rp 0,00-</div>
+                          </div>
+                          <div class="row">
+                            <div class="col">PPn</div>
+                            <div class="col">Rp 0,00-</div>
+                          </div>
+                          <hr>
+                          <div class="row font-weight-bold h5">
+                            <div class="col">Total</div>
+                            <div class="col">Rp 0,00-</div>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-block btn-outline-dark">List Order</button>
+                      <button type="button" class="btn btn-block btn-dark">Pay</button>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg">
               <div class="card card-row">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-center">
                   Coffe Base
                 </div>
                 <div class="card-body overflow-auto">
@@ -146,28 +220,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         $nomor++;
                       ?>
                         <div class="col-lg-4 " id="menu">
-                          <a href="<?php echo base_url() ?>index.php/kasir_controler/add_cart/<?= $data_menu['id_menu'] ?>" style="color: black">
-                            <div class="card">
-                              <!-- <img src="<?php echo base_url() ?>assets/dist/img/default-150x150.png" alt="" class="card-img-top"> -->
-                              <img src="<?php echo base_url() ?>assets/image/menu/<?= $data_menu['gambar'] ?>" alt="" class="card-img-top img-menu">
+                          <div class="card" data-toggle="modal" data-target="#exampleModal">
+                            <!-- <img src="<?php echo base_url() ?>assets/dist/img/default-150x150.png" alt="" class="card-img-top"> -->
+                            <img src="<?php echo base_url() ?>assets/image/menu/<?= $data_menu['gambar'] ?>" alt="" class="card-img-top img-menu">
 
-                              <div class="card-body">
+                            <div class="card-body">
 
-                                <!-- <input type="text" id="menuu" name="id_menu" value="<?= $data_menu['id_menu'] ?>"> -->
-                                <div class="row">
-                                  <div class="col">
-                                    <?= $data_menu['nama'] ?>
-
-                                  </div>
-                                  <div class="col float-right">
-                                    Rp<?= isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?>
-
-                                  </div>
+                              <!-- <input type="text" id="menuu" name="id_menu" value="<?= $data_menu['id_menu'] ?>"> -->
+                              <div class="row">
+                                <div class="col">
+                                  <?= $data_menu['nama'] ?>
 
                                 </div>
+                                <div class="col float-right">
+                                  Rp<?= isset($data_menu['harga']) ? $data_menu['harga'] : '0' ?>
+
+                                </div>
+
                               </div>
                             </div>
-                          </a>
+                          </div>
                         </div>
                       <?php
                       endforeach
@@ -178,91 +250,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div>
             <!-- /.col-md-6 -->
-
-            <div class="col-lg-3">
-              <div class="card h-100">
-                <div class="card-header">
-                  <h5 class="card-title m-0">Nota</h5>
-                  <div class="card-tools">
-                    <!-- <form id="data_nota" action="<?php echo base_url() ?>index.php/kasir_controler/bayar" method="post">
-                      <input type="text" value="<?= date('d/m/Y') ?>" class="form-control" name="tanggal_order">
-                      <input type="text" class="form-control" id="iniTest" name="initest">
-                    </form> -->
-
-                    <a href="<?php echo base_url() ?>index.php/kasir_controler/delete_cart">
-                      <button type="button" class="btn btn-outline-danger btn-sm" id="delete_cart">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </a>
-                    <!-- <a href="<?php echo base_url() ?>index.php/kasir_controler/nota_maker" >
-                    <button type="button" class="btn btn-outline-danger btn-sm" id="delete_cart">
-                      <i >MUEHEHEH</i>
-                    </button>
-                  </a> -->
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="container" id="nota">
-                    <?php
-                    $total_harga = 0;
-                    if ($cart != null) {
-                      // print_r($jumlah);
-                      foreach ($cart->result_array() as $data_cart) :
-                        $total_harga += $data_cart['harga'] * $jumlah[$data_cart['id_menu']]
-                    ?>
-                        <a href="" style="color: black">
-                          <div class="row">
-                            <div class="col-sm">
-                              <div class="card">
-                                <div class="card-body">
-                                  <div class="float-left">
-                                    <?= $data_cart['nama'] ?>
-                                  </div>
-                                  <div class="float-right">
-                                    <?= $jumlah[$data_cart['id_menu']] ?> x
-                                    Rp <?= isset($data_cart['harga']) ? $data_cart['harga'] : '0' ?>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                    <?php
-                      endforeach;
-                    }
-                    ?>
-                  </div>
-
-                </div>
-                <div class="card-footer">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col">
-                        <div class="float-left">
-                          TOTAL BAYAR
-                        </div>
-                        <div class="float-right">
-                          <b>Rp <?= $total_harga ?></b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <a href="<?php echo base_url() ?>index.php/kasir_controler/bayar">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col">
-                          <button type="submit" from="data_nota" class="btn btn-success btn-block">
-                            Bayar
-                          </button>
-
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-            </div>
             <!-- /.col-md-6 -->
           </div>
           <!-- /.row -->
@@ -296,6 +283,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
 
   <script src="<?php echo base_url() ?>assets/dist/js/kasir/kasir.js"></script>
+
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body h1 float-center">
+          Do you want to add this menu to your list order?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block">Yes</button>
+          <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
