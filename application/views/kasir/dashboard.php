@@ -33,32 +33,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="wrapper">
     <nav class="main-header navbar navbar-expand-xl navbar-light navbar-white navbar-fixed-top py-3">
       <div class="container">
-        <img src="<?php echo base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">DREAM CAFE Coffe & Tea</span>
+        <img src="<?php echo base_url() ?>assets/image/logogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 50px;">
+        <span class="brand-text">
+          <p class="font-weight-bold">
+            DREAM CAFE
+            <i class="font-weight-light">
+              Coffe & Tea
+            </i>
+          </p>
+        </span>
+        <!-- <span class="brand-text font-weight-light"></span> -->
 
         <!-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> -->
 
-        <div class="navbar-toggler order-1" id="navbarCollapse">
+        <!-- <div class="navbar-toggler order-1" id="navbarCollapse">
 
+        </div> -->
+
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="notifications-menu">
+              <a href="<?php echo base_url() ?>index.php/login_controler/log_out">
+                <i class="fa fa-power-off"></i>
+              </a>
+            </li>
+
+            <li>
+              <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+            </li>
+          </ul>
         </div>
-
-
-      </div>
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <li class="notifications-menu">
-            <a href="<?php echo base_url() ?>index.php/login_controler/log_out">
-              <i class="fa fa-power-off"></i>
-              Log Out
-            </a>
-          </li>
-
-          <li>
-            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
-          </li>
-        </ul>
       </div>
     </nav>
     <!-- Navbar -->
@@ -507,7 +514,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               </div>
               <div class="col">
-                <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#payment" class="btn btn-outline-dark btn-block">Pay</button>
+                <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#done" class="btn btn-outline-dark btn-block">Pay</button>
 
               </div>
             </div>
@@ -539,6 +546,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="col">
                 <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#counting" class="btn btn-outline-dark btn-block">Next</button>
 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="done" tabindex="-1" role="dialog" aria-labelledby="doneLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col h3 text-center">
+                Done
+              </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+              <div class="col text-center display-1">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+              <div class="col text-center h5">
+                thank you, please wait for your order at your table
               </div>
             </div>
           </div>
