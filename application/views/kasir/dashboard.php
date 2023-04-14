@@ -323,11 +323,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="row" style="margin: 20px;">
               <div class="col">
-                <button type="button" style="height: 100px;" class="btn btn-outline-dark btn-block">Cash</button>
+                <button type="button" style="height: 100px;" class="btn btn-outline-dark btn-block" data-dismiss="modal" data-toggle="modal" data-target="#name_order">Cash</button>
 
               </div>
               <div class="col">
-                <button type="button" style="height: 100px;" class="btn btn-outline-dark btn-block" data-dismiss="modal">Debit</button>
+                <button type="button" style="height: 100px;" class="btn btn-outline-dark btn-block">Debit</button>
 
               </div>
             </div>
@@ -407,6 +407,137 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="col">
                 <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#payment" class="btn btn-outline-dark btn-block">Pay</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="counting" tabindex="-1" role="dialog" aria-labelledby="list_orderLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col h3 text-center">
+                Jhonson's bill
+
+              </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+              <div class="col">
+                <div class="container">
+                  <table class="table ">
+                    <tbody>
+                      <tr>
+                        <td>Marcha Latte (Ice)</td>
+                        <td class="text-center">1</td>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <td class="text-right">Rp 14.000</td>
+                      </tr>
+                      <tr>
+                        <td>Moccacino (Hot)</td>
+                        <td class="text-center">1</td>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <td class="text-right">Rp 24.000</td>
+                      </tr>
+                      <tr>
+                        <td>Inion Ring</td>
+                        <td class="text-center">1</td>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <td class="text-right">Rp 21.000</td>
+                      </tr>
+                      <tr>
+                        <td>Meat Toast</td>
+                        <td class="text-center">2</td>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <td class="text-right">Rp 44.000</td>
+                      </tr>
+                      <tr>
+                        <td>Honey Chiken Wings</td>
+                        <td class="text-center">1</td>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <td class="text-right">Rp 54.000</td>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Sub Total</th>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <th class="text-right">Rp 157.000</th>
+                      </tr>
+                      <tr>
+                        <th colspan="2">PPN (11%)</th>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <th class="text-right">Rp 17.270</th>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Total</th>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <th class="text-right">Rp 174.270</th>
+                      </tr>
+                      <tr>
+                        <th colspan="2">Cash</th>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <th class="text-right">
+                          <div class="row">
+                            <div class="col">Rp</div>
+                            <div class="col-sm-8">
+                              <input type="number" class="form-control" id="cash">
+
+                            </div>
+                          </div>
+                        </th>
+                      </tr>
+                      <tr class="h4">
+                        <th colspan="2">Change</th>
+                        <!-- <td class="text-right">Rp</td> -->
+                        <th class="text-right">
+                          Rp 0
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+              <div class="col">
+                <button type="button" style="height: 50px;" data-dismiss="modal" class="btn btn-outline-dark btn-block">Back</button>
+
+              </div>
+              <div class="col">
+                <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#payment" class="btn btn-outline-dark btn-block">Pay</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="name_order" tabindex="-1" role="dialog" aria-labelledby="list_orderLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col h3 text-center">
+                Please your name
+
+              </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+              <div class="col">
+                <input type="text" class="form-control form-control-lg" id="name" aria-describedby="emailHelp">
+              </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+              <div class="col">
+                <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#payment" class="btn btn-outline-dark btn-block">Back</button>
+              </div>
+              <div class="col">
+                <button type="button" style="height: 50px;" data-dismiss="modal" data-toggle="modal" data-target="#counting" class="btn btn-outline-dark btn-block">Next</button>
 
               </div>
             </div>
